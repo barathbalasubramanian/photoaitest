@@ -1,0 +1,80 @@
+.QrCodeGen{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.QrCodeGen > div{
+    width: 70vw;
+    height: 80vh;
+    background-color: #1E2742;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.QrCodeGen > div > div:nth-child(1){
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 2vw;
+}
+.QrCodeGen > div > div:nth-child(2){
+    padding: 2vw;
+    background-color: white;
+    border-radius: 20px;
+}
+
+
+/* rewrite */
+
+.downbtn {
+    background-color: #9747FF;
+    border: none;
+    outline: none;
+    text-align: center;
+    padding: 7px 30px;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.btndiv{
+    margin-top: 3em;
+}
+
+
+@media screen and (min-width: 0px) and (max-width: 800px) {
+    .QrCodeGen > div{
+        width: 80vw;
+    }
+}
+@media screen and (min-width: 0px) and (max-width: 600px) {
+    .QrCodeGen > div{
+        width: 90vw;
+        height: 52vh;
+    }
+    .QrCodeGen{
+        height: 80vh;
+    }
+    .scantit{
+        position: absolute;
+        top: 7%;
+        font-size: 24px;
+    }    
+    .qrcodeDiv {
+        position: absolute;
+        margin: 12px;
+        background-color: #13192F !important;
+        top: 15%;
+    }
+    .QrCodeGen{
+        height: 100vh
+    }
+    .btndiv {
+        margin-top: 9em;
+    }
+}

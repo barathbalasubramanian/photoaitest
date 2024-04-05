@@ -1,0 +1,106 @@
+'use server';
+import React from 'react';
+import { createClient } from "@supabase/supabase-js";
+import { unstable_noStore as noStore } from 'next/cache';
+import { cookies } from "next/headers";
+import axios from 'axios';
+export default async function sendsmscrm(name,cname,status,full,bal,Mobile) {
+    try {
+        noStore();
+        const UserID = cookies();
+        const User_Name = UserID.get('UserID').value;
+        const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_KEY);
+        const Whatsapp_ = await supabase.from('Studio-Admin').select('WhatsApp_API,Phone_No,Is_Whatsapp_Verified').eq('UserID', User_Name);
+        const WhatUrl = Whatsapp_.data[0].WhatsApp_API;
+        if(Whatsapp_.data[0].Is_Whatsapp_Verified){
+            const Text = `${WhatUrl}&phone=${Mobile}&text=customer_page_ut&priority=wa&stype=normal&Params=${name},${cname},${status},₹${full},₹${full-bal},₹${bal},${User_Name}`
+            await hitAPI(Text);
+        }else{
+            const Text = `${WhatUrl}&number=91${Mobile}&type=text&message=%0AHello ${name},%0A%0AWe hope this message finds you well. We wanted to provide you with an update on your ${cname} event with us. Here are the details:%0A%0AStatus: ${status}%0ATotal Amount: ₹${full}%0AAmount Paid: ₹${full-bal}%0ABalance Due: ₹${bal}%0A%0AShould you have any questions or need further assistance, please don't hesitate to reach out.%0A%0ABest Regards,%0A${User_Name}`;
+            await hitAPI(Text);
+        }
+        return true;
+    } catch (error) {
+        console.error('Error:', error);
+        return false;
+    }
+}
+
+async function hitAPI(Text) {
+    console.log(Text.split(' ').join('%20'));
+        try {
+            const response = await axios.get(Text.split(' ').join('%20'));
+            if (response.ok) {
+                return true
+            } else {
+                console.log(`API hit failed for number`);
+            }
+        } catch (error) {
+            console.error(`Error while making API request`);
+        }
+}
+export async function sendsmscrmofcustomer(name,bal,Mobile) {
+    try {
+        noStore();
+        const UserID = cookies();
+        const User_Name = UserID.get('UserID').value;
+        const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_KEY);
+        const Whatsapp_ = await supabase.from('Studio-Admin').select('WhatsApp_API,Phone_No,Is_Whatsapp_Verified').eq('UserID', User_Name);
+        const WhatUrl = Whatsapp_.data[0].WhatsApp_API;
+        if(Whatsapp_.data[0].Is_Whatsapp_Verified){
+            const text = `${WhatUrl}&phone=${Mobile}&text=account_message_ut&priority=wa&stype=normal&Params=${name},₹${bal},${User_Name}`
+            await hitAPI(text);;
+        }else{
+            const Text = `${WhatUrl}&number=91${Mobile}&type=text&message=%0AHello ${name},%0A%0AWe hope this message finds you well. We like to provide you with an update regarding your account with us.%0A%0AThe current outstanding balance to be settled is ₹${bal}.%0A%0AShould you have any queries or require further clarification, please feel free to get in touch with us.%0A%0ABest Regards,%0A${User_Name}`;
+            await hitAPI(Text);;
+        }
+        return true;
+    } catch (error) {
+        console.error('Error:', error);
+        return false;
+    }
+}
+export async function sendsmscrmofcustomersetelement(name,bal,Mobile) {
+    try {
+        noStore();
+        const UserID = cookies();
+        const User_Name = UserID.get('UserID').value;
+        const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_KEY);
+        const Whatsapp_ = await supabase.from('Studio-Admin').select('WhatsApp_API,Phone_No,Is_Whatsapp_Verified').eq('UserID', User_Name);
+        const WhatUrl = Whatsapp_.data[0].WhatsApp_API;
+        if(Whatsapp_.data[0].Is_Whatsapp_Verified){
+            const text = `${WhatUrl}&phone=${Mobile}&text=account_message_ut&priority=wa&stype=normal&Params=${name},₹${bal},${User_Name}`
+            await hitAPI(text);;
+        }else{
+            const Text = `${WhatUrl}&number=91${Mobile}&type=text&message=%0A Hello ${name},%0A%0AWe hope this message finds you well. We'd like to provide you with an update regarding your account with us. %0A%0AThe current outstanding balance to be settled is ₹${bal}.%0A%0AShould you have any queries or require further clarification, please feel free to get in touch with us. %0A%0ABest Regards,%0A${User_Name}`;
+            await hitAPI(Text);;
+        }
+        return true;
+    } catch (error) {
+        console.error('Error:', error);
+        return false;
+    }
+}
+export async function sendgreatingmessages(SendingData,ArrayOfNumbers) {
+    try {
+        noStore();
+        const UserID = cookies();
+        const User_Name = UserID.get('UserID').value;
+        const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_KEY);
+        const Whatsapp_ = await supabase.from('Studio-Admin').select('WhatsApp_API,Phone_No,Is_Whatsapp_Verified').eq('UserID', User_Name);
+        const WhatUrl = Whatsapp_.data[0].WhatsApp_API;
+        for(let a = 0;a<ArrayOfNumbers.length;a++){
+            if(Whatsapp_.data[0].Is_Whatsapp_Verified){
+                const text = `${WhatUrl}phone=${ArrayOfNumbers[a][0]}&text=${SendingData.Greeting_Name},%0A%0A${SendingData.Desc}&media_url=${SendingData.Photo}&priority=wa&stype=normal&Params=${ArrayOfNumbers[a][1]}`
+                await hitAPI(text);;
+            }else{
+                const Text = `${WhatUrl}&number=91${ArrayOfNumbers[a][0]}&image&message=Hi ${ArrayOfNumbers[a][1]},%0A%0A${SendingData.Greeting_Name},%0A%0A${SendingData.Desc}&media_url=${SendingData.Photo}`;
+                await hitAPI(Text);;
+            }
+        }
+        return true;
+    } catch (error) {
+        console.error('Error:', error);
+        return false;
+    }
+}

@@ -1,0 +1,662 @@
+.Search{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Search > div{
+    width: 70vw;
+    height: 80vh;
+    background-color: #1E2742;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.Search > div > div:nth-child(1){
+    background-color: #13192F;
+    border-radius: 10px;
+}
+.Search > div > div:nth-child(1) > input{
+    border: none;
+    padding: 1vw;
+    width: 300px;
+    font-size: 17px;
+    outline: none;
+    background-color: #13192F;
+    color: white;
+    border-radius: 10px;
+}
+.Search > div > div:nth-child(1) > button{
+    background-color: #725AFF;
+    padding: 0.7vw;
+    margin: 0.3vw;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    border: none;
+}
+.Search > div > div:nth-child(2){
+    color: white;
+    font-size: 20px;
+    margin: 3vw 0 2vw 0;
+}
+.Search > div > div:nth-child(3){
+    width: 250px;
+    padding: 1vw;
+    color: white;
+    border: 1px solid gray;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    background-color: #13192F;
+}
+.Search > div > div:nth-child(4){
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2vw;
+}
+.Search > div > div:nth-child(4) > button{
+    border-radius: 8px;
+    padding: 1vw 2vw;
+    font-size: 15px;
+    border: none;
+    color: white;
+    margin-right: 3vw;
+    background-color: #9747FF;
+    cursor: pointer;
+}
+.Search > div > div:nth-child(4) > a{
+    border-radius: 8px;
+    padding: 1vw 2vw;
+    text-decoration: none;
+    font-size: 15px;
+    border: none;
+    color: white;
+    background-color: #9747FF;
+    cursor: pointer;
+}
+.searchresult{
+    display: flex;
+    background-color: #13192F;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    width: 337px;
+    border-radius: 8px;
+    margin: 2px;
+    cursor: pointer;
+}
+.searchresult > div{
+    color: white;
+    font-size: 15px;
+    padding: 1vw;
+}
+.searchresult > a{
+    border-radius: 8px;
+    padding: 0.7vw 1.5vw;
+    text-decoration: none;
+    font-size: 15px;
+    border: none;
+    color: white;
+    background-color: #9747FF;
+    cursor: pointer;
+}
+.FilesInputBox{
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #1e27429c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.FilesInputBox > div{
+    width: 500px;
+    height: 400px;
+    background-color: #1e2742;
+    border-radius: 10px;
+    border: 1px solid gray;
+}
+.FilesInputBox > div > form{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.FilesInputBox > div > form > div{
+    display: flex;
+    width: 100%;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: space-around;
+}
+.FilesInputBox > div > form > div > div{
+    color: white;
+    font-size: 30px;
+    font-weight: bolder;
+}
+.FilesInputBox > div > form > input{
+    padding: 2vw 0;
+    margin-left: -2vw;
+    margin-top: 30px;
+    cursor: pointer;
+    font-size: 20px;
+    color: white;
+}
+.FilesInputBox > div > form > button{
+    background-color: #725AFF;
+    padding: 1vw 2vw;
+    margin: 40px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    border: none;
+}
+.FilesInputBox > div > form > div > div:nth-child(2){
+    cursor: pointer;
+}
+.UploadPercentage{
+    display: flex;
+    flex-direction: column;
+}
+.UploadPercentage > div{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 20px;
+}
+.lineclass{
+    width: 70%;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
+.UploadPercentagetext{
+    font-size: 20px!important;
+    margin-left: 20px;
+    margin-bottom: 5px;
+}
+
+
+
+/* Rewrite */
+
+.Container {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.subCon{
+    width: 70vw;
+    height: 80vh;
+    position: relative;
+    background-color: #1E2742;
+    border-radius: 20px;
+}
+
+.searchPage {
+    width: 70vw;
+    height: 80vh;
+    background-color: #1E2742;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+
+    position: relative;
+}
+
+.SearchDiv{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 3em;
+    padding: 0 1.5em 0 2em;
+}
+
+.inpDiv{
+    display: flex;
+    align-items: center;
+    gap: 2em;
+    color: white;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    width: 75%;
+    border-radius: 10px;
+}
+
+.inpDiv #input {
+    border-radius: 8px;
+    background-color: #13192F;
+    color: white;
+    border: none;
+    outline: none;
+    padding: 12px 20px;
+    width: 75%;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.searchbtn{
+    background: none;
+    border: none;
+    color: white;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 28px;
+    background-color: #9747FF;
+    border-radius: 6px;
+}
+
+.hamburger{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hamburgerimg{
+    width: 28px;
+    cursor: pointer;
+}
+
+.eveDetails{
+    color: white;
+    background-color: #2D3A63;
+    width: fit-content;
+    padding: 12px 24px;
+    border-radius: 10px;
+    margin: 0 0 0 3em;
+}
+
+.detail {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1em;
+    padding: 15px 0 0 0;
+}
+
+.div1 , .div2 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    color: white;
+    gap: 1em;
+}
+
+.options {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2em;
+    height: 85%;
+    padding: 0 22px;
+}
+
+.btns {
+    border: none;
+    outline: none;
+    background-color: #9747FF;
+    color: white;
+    width: 230px;
+    height: 50px;
+    border-radius: 10px;
+    font-family: "Poppins";
+    cursor: pointer;
+}
+
+.drawer {
+    position: absolute;
+    right: 0;
+    height: 80vh;
+    background-color: #13192F;
+    transition: transform 2s ease-in-out; /* Corrected transition property */
+    transform: translateX(10%);
+}
+
+.close {
+    display: flex;
+    flex: end;
+    /* align-items: end; */
+    /* justify-content: end; */
+    padding: 12px;
+}
+
+.clsbtn {
+    
+    width: 28px;
+    cursor: pointer;
+}
+
+
+/* New Folder */
+
+.backfromcrt{
+    position: absolute;
+    left: 4px;
+    top: -30px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    cursor: pointer;
+}
+
+.newfolderDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background-color: #1E2742;
+    border-radius: 20px;
+}
+
+.createnewDiv{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    padding: 12px 20px;
+    color: white;
+    width: 15em;
+    background-color: #13192F;
+    border-radius: 10px;
+}
+
+.maincrtDiv{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#crtnew{
+    border: none;
+    outline: none;
+    padding: 4px 8px;
+    font-size: 15px;
+    color: white;
+    border-radius: 5px;
+    border: .5px solid #9747FF;
+    background-color: #1E2742;
+    width: 93%;
+}
+
+.crt , .can {
+    cursor: pointer;
+}
+
+.crtcan{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1em;
+}
+
+.dialogBackdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px);
+    z-index: 999;
+}
+  
+.maincrtDiv {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 8px;
+    padding: 20px;
+    z-index: 1000; 
+}
+
+.evename{
+    text-transform: capitalize;
+    padding: 0 0 10px;
+    border-bottom: 1px solid;
+}
+
+.FoldersCon {
+    color: white;
+    display: flex;
+    row-gap: 2em;
+    flex-wrap: wrap;
+    align-items: center;
+    /* justify-content: start; */
+    padding: 3em 2em;
+    max-height: 60vh;
+    overflow: scroll;
+}
+
+.folder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.allFolderstit {
+    color: white;
+    padding: 2em 2em 0 2em;
+}
+
+.mobOptions{
+    display: none;
+}
+
+.folderImg{
+    width: 75%;
+}
+
+.popperDiv{
+    background-color: #13192F !important;
+}
+
+
+.secretInp{
+    border: none;
+    outline: none;
+    background-color: none;
+    background-color: #1e2742;
+    color: white;
+    padding: 8px 18px 8px 10px;
+    width: 75%; 
+}
+
+.secretmainDiv {
+    width: 16em;
+    background-color: #13192F;
+    padding: 2em 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+.btnsec{
+    border: none;
+    outline: none;
+    padding: 4px 8px;
+    background: no-repeat;
+    color: white;
+    cursor: pointer;
+}
+
+
+@media screen and (min-width: 0px) and (max-width: 1100px) {
+    .Search > div > div:nth-child(1) > input{
+        padding: 2vw;
+    }
+    .Search > div > div:nth-child(1) > button{
+        padding: 1.7vw;
+    }
+}
+@media screen and (min-width: 0px) and (max-width: 800px) {
+    .Search > div{
+        width: 80vw;
+    }
+    .Search > div > div:nth-child(4) > button{
+        padding: 2vw 3vw;
+    }
+    .Search > div > div:nth-child(4) > a{
+        padding: 2vw 3vw;
+    }
+}
+@media screen and (min-width: 0px) and (max-width: 600px) {
+    .Search > div{
+        width: 90vw;
+        justify-content: flex-start;
+    }
+    .Search > div > div:nth-child(1){
+        margin-top: 10vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .Search > div > div:nth-child(1) > input{
+        width: 74%;
+        padding: 3vw;
+    }
+    .Search > div > div:nth-child(1) > button{
+        padding: 2.7vw;
+    }
+    .Search{
+        height: 90vh;
+    }
+    .Search > div > div:nth-child(2){
+        color: white;
+        font-size: 20px;
+        margin: 7vw 0 7vw 0;
+    }
+    .Search > div > div:nth-child(1) > input{
+        width: 70%;
+        padding: 4vw;
+    }
+    .Search > div > div:nth-child(4){
+        margin-top: 10vw;
+    }
+    .Search > div > div:nth-child(4) > button{
+        padding: 4vw 6vw;
+    }
+    .Search > div > div:nth-child(4) > a{
+        padding: 4vw 6vw;
+    }
+    .searchresult{
+        max-width: 300px;
+        margin: 2vw;
+    }
+    .popperDiv{
+        background-color: #13192F !important;
+    }
+    .subCon {
+        width: 100vw;
+        background: none;
+    }
+    .searchPage{
+        width: 100vw;
+        background: none;
+    }
+    .SearchDiv{
+        background-color: #2D3A63;
+        margin: 0;
+        margin: 0 1em;
+        border-radius: 10px;
+        padding: 0px 10px;
+    }
+    .inpDiv {
+        padding: 6px 0px;
+        width: 100%;
+    }
+    .inpDiv #input {
+        padding: 6px 20px !important;
+    }
+    .hamburger {
+        display: none;
+    }
+    .searchbtn {
+        padding: 6px 28px;
+    }
+
+    .eveDetails {
+        margin: 0 16px;
+        width: 80%;
+    }
+    .detail {
+        flex-direction: column-reverse;
+    }
+    .mobOptions {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        row-gap: 1em;
+        padding-top: 2em;
+    }
+    .btns {
+        width: 150px;
+        height: 40px;
+    }
+
+    .backfromcrt{
+        margin-left: 1em;
+    }
+    .newfolderDiv{
+        background: none;
+        border-radius: 0px;
+    }
+    .crtnewImg{
+        width: 10em;
+    }
+    .createnewDiv{
+        background-color: #1e2742;
+    }
+
+    .FoldersCon{
+        flex-wrap: wrap;
+        column-gap: 6px;
+        justify-content: space-between;
+    }
+    .folder{
+        flex-direction: row;
+        width: 8em;
+        justify-content: start;
+        background-color: #1E2742;
+        padding: 4px 12px;
+        border-radius: 6px;
+    }
+    .folderImg{
+        width: 18%;
+    }
+
+}
+@media screen and (min-width: 0px) and (max-width: 500px) {
+    .Search > div{
+        width: 95vw;
+    }
+    .Search > div > div:nth-child(1) > button{
+        padding: 3.7vw;
+    }
+}

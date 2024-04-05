@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+}
+*::-webkit-scrollbar{
+	width: 0;
+  height: 0;
+  font-family: 'Poppins', sans-serif;
+}
+html, body{
+  background-color: #13192F;
+  width: 100vw;
+  scroll-behavior: smooth;
+}
+.css-i4bv87-MuiSvgIcon-root{
+  color: #725AFF!important;
+}
+.css-vubbuv{
+  color: #725AFF!important;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: fit-content;
+}
+th{
+  background-color: #13192f;
+}
+td{
+  background-color: #1e2742;
+}
+th, td {
+  border: 1px solid rgba(255, 255, 255, 0.719);
+  padding: 8px;
+}
+table > tbody > tr > td{
+  color: white;
+  text-align: center;
+}
+.css-4t3x6l-MuiPaper-root-MuiDrawer-paper{
+  background-color: #13192f!important;
+}
+.css-wf16b5{
+  background-color: #13192f!important;
+}

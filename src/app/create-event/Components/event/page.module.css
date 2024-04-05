@@ -1,0 +1,335 @@
+.EventMainDiv{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.EventMainDiv > div{
+    width: 80vw;
+    height: 80vh;
+    background-color: #1E2742;
+    border-radius: 20px;
+}
+.EventMainDiv > div > div:nth-child(1){
+    display: flex;
+    align-items: center;
+    margin-left: 1vw;
+    margin-top: 5vw;
+}
+.EventMainDiv > div > div:nth-child(1) > div{
+    color: white;
+    font-size: 25px;
+    margin-right: 20px;
+}
+.EventMainDiv > div > div:nth-child(1) > input{
+    outline: none;
+    background-color: #13192F;
+    border: none;
+    width: 50%;
+    border-radius: 5px;
+    color: white;
+    padding: 1vw;
+}
+.EventMainDiv > div > div:nth-child(2){
+    display: flex;
+    align-items: center;
+    margin-left: 1vw;
+    margin-top: 5vw;
+}
+.EventMainDiv > div > div:nth-child(2) > div{
+    color: white;
+    font-size: 25px;
+    margin-right: 20px;
+}
+.EventMainDiv > div > div:nth-child(3){
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5vw;
+}
+.EventMainDiv > div > div:nth-child(3) > img{
+    cursor: pointer;
+}
+.EventMainDiv > div > div:nth-child(3) > div{
+    color: white;
+    margin-left: 10px;
+    font-size: 20px;
+    margin-right: 20px;
+}
+.EventMainDiv > div > div:nth-child(4){
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5vw;
+}
+.EventMainDiv > div > div:nth-child(4) > button{
+    color: white;
+    border: none;
+    padding: 1vw 2vw;
+    margin: 0 0.5vw;
+    border-radius: 5px;
+    background-color: #9747FF;
+    cursor: pointer;
+}
+.FormControl{
+    background-color:'#9747ff';
+    color:'#ffffff';
+}
+
+
+
+
+/* rewrite */
+
+
+.dis-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.dis-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.evePage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #fff;
+    font-family: "Poppins";
+    height: 90vh;
+    overflow: hidden;
+    margin-top: 7em;
+    row-gap: 5em;
+}
+
+.eveformCon {
+    display: flex;
+    flex-direction: column;
+    gap:1.5em;
+    width: 45em;
+}
+
+.eveDiv{
+    display: flex;
+    flex-direction: row;
+    column-gap: 2em;
+    padding: 4px 29px;
+    border: 0.5px solid #808080;
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 30px;
+    text-align: left;
+    border-radius: 10px;
+}
+
+#eveinput {
+    font-size: 18px;
+    outline: none;
+    background: none;
+    border: none;
+    color: #fff;
+    text-transform: capitalize;
+    width: 100%;
+}
+
+.pre {
+    text-decoration: none;
+    font-family: "Poppins";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.datePicker *{
+    text-decoration: none !important;
+    border: 0 !important;
+    padding: 0 !important;
+    color: #fff !important;
+    font-size: 18px !important;
+    font-family: "Poppins" !important;
+    line-height: 0 !important;
+    padding-top: 5px;
+}
+
+.checkBoxCon{
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkBoxCon * {
+    font-family: "Poppins";
+}
+
+.checkBoxCon  .genbtn {
+    color: #fff;
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+    width: fit-content;
+    background-color: #9747FF;
+    padding: 12px 20px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.dialogBackdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px);
+    z-index: 999;
+}
+  
+.maincrtDiv {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 8px;
+    padding: 20px;
+    z-index: 1000; 
+    background-color: #1E2742;
+    max-width: 50vw !important;
+}
+
+.dialogbox{
+    background-color: #1E2742 !important;
+    padding: 2em 4em;
+}
+
+.diaInp *{
+    border-color: #808080    !important;
+    color: #fff !important;
+}
+
+.diaInp label {
+    color: #808080 !important;
+    line-height: 0.80;
+}
+
+.diaInp input {
+    border-radius: 10px;
+    padding: 8px 16px;
+    text-transform: capitalize;
+}
+
+.savebtn {
+    padding: 4px 8px;
+    background-color: #9747FF;
+    border: none;
+    outline: none;
+    text-align: center;
+    padding: 4px 25px;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+.btndiv{
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    margin: 2em 0 0 0;
+    cursor: pointer;
+}
+
+.genDiv {
+
+    width: fit-content;
+}
+
+
+@media screen and (min-width: 0px) and (max-width: 1100px) {
+    .EventMainDiv > div{
+        width: 85vw;
+    }
+    .EventMainDiv > div > div:nth-child(1) > input{
+        width: 70%;
+        padding: 2vw;
+    }
+    .EventMainDiv > div > div:nth-child(2){
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+    }
+    .EventMainDiv > div > div:nth-child(4) > button{
+        padding: 2vw 3vw;
+    }
+}
+@media screen and (min-width: 0px) and (max-width: 800px) {
+    .EventMainDiv > div{
+        width: 90vw;
+    }
+    .EventMainDiv > div > div:nth-child(1) > div{
+        font-size: 20px;
+    }
+    .EventMainDiv > div > div:nth-child(2) > div{
+        font-size: 20px;
+    }
+    .EventMainDiv > div > div:nth-child(4) > button{
+        padding: 2.5vw 3.5vw;
+    }
+}
+@media screen and (min-width: 0px) and (max-width: 600px) {
+    .EventMainDiv > div{
+        width: 100vw;
+    }
+    .EventMainDiv > div > div:nth-child(1) > input{
+        padding: 4vw;
+        margin: 2vw 0;
+    }
+    .EventMainDiv > div > div:nth-child(1){
+        flex-direction: column;
+    }
+    .EventMainDiv > div > div:nth-child(2) > div{
+        margin: 5px;
+    }
+    .EventMainDiv > div > div:nth-child(2) > div:nth-child(1){
+        grid-column-start: 1;
+        grid-column-end: 4;
+        text-align: center;
+    }
+    .EventMainDiv > div > div:nth-child(4) > button{
+        padding: 4vw 5vw;
+        font-size: 20px;
+    }
+    .EventMainDiv{
+        height: 90vh;
+    }
+    .genDiv {
+       width: 86vw;
+    }
+    .maincrtDiv {
+        min-width: 80vw;
+        max-width: 80vw !important;
+    }
+}
+
+/* rewrite */
+@media screen and (min-width: 0px) and (max-width: 600px) {
+    .eveDiv {
+        column-gap: 1em;
+        padding: 4px 24px;
+        font-size: 15px;
+    }
+    #eveinput {
+        font-size: 15px;
+    }
+    .eveformCon {
+        width: 24em;
+    }
+}

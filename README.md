@@ -119,8 +119,6 @@ Start the server
 ```
 
 
-
-
 # Supabase Table Schemas
 
 This document outlines the schemas for various tables in a Supabase database.
@@ -131,16 +129,16 @@ The `Studio-Admin` table stores information about administrators of the studio.
 
 | Column Name          | Data Type | Description                                        |
 |----------------------|-----------|----------------------------------------------------|
-| UserID               | TEXT      | User's ID                                          |
-| Password             | TEXT      | User's password                                    |
-| is_verified          | TEXT      | Verification status of the user                    |
-| WhatsApp_API         | TEXT      | WhatsApp API details                               |
-| Is_Prime_User        | BOOLEAN   | Indicates if the user is a prime user or not       |
-| Logo                 | TEXT      | URL or path for the user's logo                    |
-| Phone_No             | NUMERIC   | User's phone number                                |
-| Location             | TEXT      | User's location                                    |
-| Website              | TEXT      | User's website URL                                 |
-| Is_Whatsapp_Verified| BOOLEAN   | Indicates if user's WhatsApp is verified or not    |
+| :key: UserID               | TEXT      | User's ID                                          |
+| :lock: Password             | TEXT      | User's password                                    |
+| :ballot_box_with_check: is_verified          | TEXT      | Verification status of the user                    |
+| :calling: WhatsApp_API         | TEXT      | WhatsApp API details                               |
+| :star: Is_Prime_User        | BOOLEAN   | Indicates if the user is a prime user or not       |
+| :framed_picture: Logo                 | TEXT      | URL or path for the user's logo                    |
+| :phone: Phone_No             | NUMERIC   | User's phone number                                |
+| :round_pushpin: Location             | TEXT      | User's location                                    |
+| :globe_with_meridians: Website              | TEXT      | User's website URL                                 |
+| :white_check_mark: Is_Whatsapp_Verified| BOOLEAN   | Indicates if user's WhatsApp is verified or not    |
 
 ## UserEvents Table
 
@@ -148,22 +146,22 @@ The `UserEvents` table records various events associated with users.
 
 | Column Name          | Data Type | Description                                        |
 |----------------------|-----------|----------------------------------------------------|
-| EventID              | INT8      | Unique event identifier                            |
-| UserID               | TEXT      | Reference to user's ID                              |
-| EventDate            | DATE      | Date of the event                                  |
-| EventName            | TEXT      | Name of the event                                  |
-| EventDetail          | JSON      | Detailed information about the event               |
-| FavouriteImages      | JSON      | Favorite images related to the event               |
-| Customer_ID_UUID     | TEXT      | Reference to customer's ID                          |
-| Mode_Of_Payment      | TEXT      | Mode of payment for the event                      |
-| Full_Amount          | INT8      | Full amount paid for the event                     |
-| Advance_Payment      | JSONB     | Information about any advance payment made         |
-| Status               | TEXT      | Status of the event                                |
-| DigitalInvite        | JSONB     | Digital invite details                             |
-| Location             | TEXT      | Location of the event                              |
-| Folders              | JSONB     | Folders related to the event                       |
-| SelfieData           | JSONB     | Selfie data related to the event                   |
-| Secret_Key           | TEXT      | Secret key related to the event                    |
+| :id: EventID              | INT8      | Unique event identifier                            |
+| :bust_in_silhouette: UserID               | TEXT      | Reference to user's ID                              |
+| :calendar: EventDate            | DATE      | Date of the event                                  |
+| :bulb: EventName            | TEXT      | Name of the event                                  |
+| :memo: EventDetail          | JSON      | Detailed information about the event               |
+| :heart: FavouriteImages      | JSON      | Favorite images related to the event               |
+| :card_index: Customer_ID_UUID     | TEXT      | Reference to customer's ID                          |
+| :moneybag: Mode_Of_Payment      | TEXT      | Mode of payment for the event                      |
+| :currency_exchange: Full_Amount          | INT8      | Full amount paid for the event                     |
+| :money_with_wings: Advance_Payment      | JSONB     | Information about any advance payment made         |
+| :bar_chart: Status               | TEXT      | Status of the event                                |
+| :e-mail: DigitalInvite        | JSONB     | Digital invite details                             |
+| :round_pushpin: Location             | TEXT      | Location of the event                              |
+| :file_folder: Folders              | JSONB     | Folders related to the event                       |
+| :camera: SelfieData           | JSONB     | Selfie data related to the event                   |
+| :key: Secret_Key           | TEXT      | Secret key related to the event                    |
 
 ## GreetingName Table
 
@@ -171,11 +169,11 @@ The `GreetingName` table stores information about greetings.
 
 | Column Name          | Data Type | Description                                        |
 |----------------------|-----------|----------------------------------------------------|
-| Greeting_ID          | UUID      | Unique greeting identifier                         |
-| Desc                 | TEXT      | Description of the greeting                        |
-| Photo                | TEXT      | URL or path for the greeting's photo               |
-| User_Name            | TEXT      | User's name associated with the greeting           |
-| Greeting_Name        | TEXT      | Name of the greeting                               |
+| :id: Greeting_ID          | UUID      | Unique greeting identifier                         |
+| :speech_balloon: Desc                 | TEXT      | Description of the greeting                        |
+| :frame_with_picture: Photo                | TEXT      | URL or path for the greeting's photo               |
+| :bust_in_silhouette: User_Name            | TEXT      | User's name associated with the greeting           |
+| :label: Greeting_Name        | TEXT      | Name of the greeting                               |
 
 ## CustomerName Table
 
@@ -183,9 +181,9 @@ The `CustomerName` table stores information about customers.
 
 | Column Name          | Data Type | Description                                        |
 |----------------------|-----------|----------------------------------------------------|
-| Customer_ID          | UUID      | Unique customer identifier                         |
-| Customer_Name        | TEXT      | Customer's name                                    |
-| Mobile               | INT8      | Customer's mobile number                           |
-| User_Name            | TEXT      | User's name associated with the customer           |
-| Email_ID             | TEXT      | Customer's location                                |
-
+| :id: Customer_ID          | UUID      | Unique customer identifier                         |
+| :bust_in_silhouette: Customer_Name        | TEXT      | Customer's name                                    |
+| :iphone: Mobile               | INT8      | Customer's mobile number                           |
+| :bust_in_silhouette: User_Name            | TEXT      | User's name associated with the customer           |
+| :e-mail: Email_ID             | TEXT      | Customer's email address                           |
+| :round_pushpin: Location             | TEXT      | Customer's location                                |

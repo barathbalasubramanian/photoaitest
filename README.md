@@ -121,56 +121,71 @@ Start the server
 
 
 
-# Schema Design for Supabase Tables
+# Supabase Table Schemas
 
-## Studio-Admin
+This document outlines the schemas for various tables in a Supabase database.
 
-- **UserID**: Text field to store the user's ID.
-- **Password**: Text field to store the user's password.
-- **is_verified**: Text field indicating whether the user is verified or not.
-- **WhatsApp_API**: Text field for storing WhatsApp API details.
-- **Is_Prime_User**: Boolean field indicating whether the user is a prime user or not.
-- **Logo**: Text field for storing the logo URL or path.
-- **Phone_No**: Numeric field to store the user's phone number.
-- **Location**: Text field to store the user's location.
-- **Website**: Text field to store the user's website URL.
-- **Is_Whatsapp_Verified**: Boolean field indicating whether the user's WhatsApp is verified or not.
+## Studio-Admin Table
 
-## UserEvents
+The `Studio-Admin` table stores information about administrators of the studio.
 
-- **EventID**: Int8 field for unique event identification.
-- **UserID**: Text field referencing the user's ID.
-- **EventDate**: Date field indicating the date of the event.
-- **EventName**: Text field for storing the name of the event.
-- **EventDetail**: JSON field for storing detailed information about the event.
-- **FavouriteImages**: JSON field for storing favorite images related to the event.
-- **Customer_ID_UUID**: Text field referencing the customer's ID UUID.
-- **Mode_Of_Payment**: Text field indicating the mode of payment for the event.
-- **Full_Amount**: Int8 field indicating the full amount paid.
-- **Advance_Payment**: JSONB field for storing information about any advance payment made.
-- **Status**: Text field indicating the status of the event.
-- **DigitalInvite**: JSONB field for storing digital invite details.
-- **Location**: Text field indicating the location of the event.
-- **Folders**: JSONB field for storing folders related to the event.
-- **SelfieData**: JSONB field for storing selfie data related to the event.
-- **Secret_Key**: Text field for storing a secret key related to the event.
+| Column Name          | Data Type | Description                                        |
+|----------------------|-----------|----------------------------------------------------|
+| UserID               | TEXT      | User's ID                                          |
+| Password             | TEXT      | User's password                                    |
+| is_verified          | TEXT      | Verification status of the user                    |
+| WhatsApp_API         | TEXT      | WhatsApp API details                               |
+| Is_Prime_User        | BOOLEAN   | Indicates if the user is a prime user or not       |
+| Logo                 | TEXT      | URL or path for the user's logo                    |
+| Phone_No             | NUMERIC   | User's phone number                                |
+| Location             | TEXT      | User's location                                    |
+| Website              | TEXT      | User's website URL                                 |
+| Is_Whatsapp_Verified| BOOLEAN   | Indicates if user's WhatsApp is verified or not    |
 
-## GreetingName
+## UserEvents Table
 
-- **Greeting_ID**: UUID field for unique greeting identification.
-- **Desc**: Text field for describing the greeting.
-- **Photo**: Text field for storing the photo URL or path.
-- **User_Name**: Text field for storing the user's name.
-- **Greeting_Name**: Text field for storing the name of the greeting.
+The `UserEvents` table records various events associated with users.
 
-## CustomerName
+| Column Name          | Data Type | Description                                        |
+|----------------------|-----------|----------------------------------------------------|
+| EventID              | INT8      | Unique event identifier                            |
+| UserID               | TEXT      | Reference to user's ID                              |
+| EventDate            | DATE      | Date of the event                                  |
+| EventName            | TEXT      | Name of the event                                  |
+| EventDetail          | JSON      | Detailed information about the event               |
+| FavouriteImages      | JSON      | Favorite images related to the event               |
+| Customer_ID_UUID     | TEXT      | Reference to customer's ID                          |
+| Mode_Of_Payment      | TEXT      | Mode of payment for the event                      |
+| Full_Amount          | INT8      | Full amount paid for the event                     |
+| Advance_Payment      | JSONB     | Information about any advance payment made         |
+| Status               | TEXT      | Status of the event                                |
+| DigitalInvite        | JSONB     | Digital invite details                             |
+| Location             | TEXT      | Location of the event                              |
+| Folders              | JSONB     | Folders related to the event                       |
+| SelfieData           | JSONB     | Selfie data related to the event                   |
+| Secret_Key           | TEXT      | Secret key related to the event                    |
 
-- **Customer_ID**: UUID field for unique customer identification.
-- **Customer_Name**: Text field for storing the customer's name.
-- **Mobile**: Int8 field for storing the customer's mobile number.
-- **User_Name**: Text field for storing the user's name.
-- **Email_ID**: Text field for storing the customer's email address.
-- **Location**: Text field for storing the customer's location.
+## GreetingName Table
 
+The `GreetingName` table stores information about greetings.
 
+| Column Name          | Data Type | Description                                        |
+|----------------------|-----------|----------------------------------------------------|
+| Greeting_ID          | UUID      | Unique greeting identifier                         |
+| Desc                 | TEXT      | Description of the greeting                        |
+| Photo                | TEXT      | URL or path for the greeting's photo               |
+| User_Name            | TEXT      | User's name associated with the greeting           |
+| Greeting_Name        | TEXT      | Name of the greeting                               |
+
+## CustomerName Table
+
+The `CustomerName` table stores information about customers.
+
+| Column Name          | Data Type | Description                                        |
+|----------------------|-----------|----------------------------------------------------|
+| Customer_ID          | UUID      | Unique customer identifier                         |
+| Customer_Name        | TEXT      | Customer's name                                    |
+| Mobile               | INT8      | Customer's mobile number                           |
+| User_Name            | TEXT      | User's name associated with the customer           |
+| Email_ID             | TE
 

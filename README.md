@@ -187,5 +187,5 @@ The `CustomerName` table stores information about customers.
 | Customer_Name        | TEXT      | Customer's name                                    |
 | Mobile               | INT8      | Customer's mobile number                           |
 | User_Name            | TEXT      | User's name associated with the customer           |
-| Email_ID             | TE
+| Email_ID             | TEXT      | Customer's location                                |
 

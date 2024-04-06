@@ -134,12 +134,12 @@ The `Studio-Admin` table stores information about administrators of the studio.
 | :lock: Password             | TEXT      | User's password                                    |
 | :ballot_box_with_check: is_verified          | TEXT      | Verification status of the user                    |
 | :calling: WhatsApp_API         | TEXT      | WhatsApp API details                               |
-| :star: Is_Prime_User        | BOOLEAN   | Indicates if the user is a prime user or not       |
+| :star: Is_Prime_User        | BOOLEAN   | Indicates if the user is a prime user or not (Default : false)       |
 | :framed_picture: Logo                 | TEXT      | URL or path for the user's logo                    |
 | :phone: Phone_No             | NUMERIC   | User's phone number                                |
 | :round_pushpin: Location             | TEXT      | User's location                                    |
 | :globe_with_meridians: Website              | TEXT      | User's website URL                                 |
-| :white_check_mark: Is_Whatsapp_Verified| BOOLEAN   | Indicates if user's WhatsApp is verified or not    |
+| :white_check_mark: Is_Whatsapp_Verified| BOOLEAN   | Indicates if user's WhatsApp is verified or not (Default : false)    |
 
 ## UserEvents Table
 
@@ -157,11 +157,11 @@ The `UserEvents` table records various events associated with users.
 | :moneybag: Mode_Of_Payment      | TEXT      | Mode of payment for the event                      |
 | :currency_exchange: Full_Amount          | INT8      | Full amount paid for the event                     |
 | :money_with_wings: Advance_Payment      | JSONB     | Information about any advance payment made         |
-| :bar_chart: Status               | TEXT      | Status of the event                                |
+| :bar_chart: Status               | TEXT      | Status of the event (Default : '')                              |
 | :e-mail: DigitalInvite        | JSONB     | Digital invite details                             |
 | :round_pushpin: Location             | TEXT      | Location of the event                              |
 | :file_folder: Folders              | JSONB     | Folders related to the event                       |
-| :camera: SelfieData           | JSONB     | Selfie data related to the event                   |
+| :camera: SelfieData           | JSONB     | Selfie data related to the event (Default : [])                  |
 | :key: Secret_Key           | TEXT      | Secret key related to the event                    |
 
 ## GreetingName Table

@@ -195,28 +195,29 @@ The `CustomerName` table stores information about customers.
 
 ```bash
 
-
-├── Studio-admin 1
-│   ├── Compressed Images ( Contains compressed images of all photos in folder format. )
-│   │   ├── All Available Folders
-│   │   │   └── Images
-│   ├── Favourites.json ( JSON file containing favorite photos. )
-│   ├── Favourites
-│   │   └── Photos in zip format ( Zip file containing favorite photos. )
-│   ├── PhotographEncoded.json ( JSON file containing all photos in the studio for processing in AI model. )
-│   ├── Photographers image
-│   │   └── All Available Folders ( Contains photos organized in folders. )
-│   │       └── Images 
-│   ├── Selfie_Encoded.json ( JSON file containing photos in encoded format for processing in AI model. ) 
-│   └── Selfie
-│       └── All Users ( Username bacame the name of the folder. ) ( Contains images in JPEG format for the specific user. ) 
-│           ├── Images in jpeg format
-│           └── Data.json ( JSON file containing user information. ) 
-├── Studio-admin 2
-│   ├── ...
-│   
-└── Studio-admin 3
-    ├── ... 
+Buckets
+    └── Selfie-bucket
+        └──  Studio-admin 1
+        │   ├── Compressed Images ( Contains compressed images of all photos in folder format. )
+        │   │   ├── All Available Folders
+        │   │   │   └── Images
+        │   ├── Favourites.json ( JSON file containing favorite photos. )
+        │   ├── Favourites
+        │   │   └── Photos in zip format ( Zip file containing favorite photos. )
+        │   ├── PhotographEncoded.json ( JSON file containing all photos in the studio for processing in AI model. )
+        │   ├── Photographers image
+        │   │   └── All Available Folders ( Contains photos organized in folders. )
+        │   │       └── Images 
+        │   ├── Selfie_Encoded.json ( JSON file containing photos in encoded format for processing in AI model. ) 
+        │   └── Selfie
+        │       └── All Users ( Username bacame the name of the folder. ) ( Contains images in JPEG format for the specific user. ) 
+        │           └── Images in jpeg format
+        │           └── Data.json ( JSON file containing user information. ) 
+        ├── Studio-admin 2
+        │   ├── ...
+        │   
+        └── Studio-admin 3
+            ├── ... 
 
 
 ```

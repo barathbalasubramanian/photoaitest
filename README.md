@@ -192,7 +192,7 @@ The `CustomerName` table stores information about customers.
 
 
 
-# Selfie-bucket
+# S3 Selfie-bucket Schema
 
 ```bash
 

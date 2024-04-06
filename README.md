@@ -184,9 +184,9 @@ Allows setting a secret key for each event, which users must provide to access t
 
 ---
 
-## PrimeUser
+## SuperUser
 
-Prime users have access to view all studio events and their respective dashboards.
+Super users have access to view all studio events and their respective dashboards.
 
 
 

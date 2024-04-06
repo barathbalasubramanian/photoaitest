@@ -5,6 +5,7 @@ Hi this project is done in next.js
 ## Authors
 
 - [@jitenderji1137](https://github.com/jitenderji1137)
+- [@barathbalasubramanian](https://github.com/barathbalasubramanian)
 
 
 ## Documentation

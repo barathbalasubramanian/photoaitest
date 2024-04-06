@@ -189,18 +189,3 @@ The `CustomerName` table stores information about customers.
 | :round_pushpin: Location             | TEXT      | Customer's location                                |
 
 
-
-
-# Schema Description
-
-## Tables
-
-### Customer
-
-- **Customer_ID**: A unique identifier for each customer (type: uuid, primary key, default: gen_random_uuid())
-- **Customer_Name**: The name of the customer (type: text, nullable)
-- **Mobile**: The mobile number of the customer (type: int8, nullable)
-- **User_Name**: The username of the customer (type: text, nullable)
-- **Email_ID**: The email ID of the customer (type: text, nullable)
-- **Location**: The location of the customer (type: text, nullable)
-

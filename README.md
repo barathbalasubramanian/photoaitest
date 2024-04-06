@@ -118,3 +118,50 @@ Start the server
   npm run dev
 ```
 
+
+
+
+
+
+# Schema Design for UserEvents Table in Supabase
+
+## Overview
+
+This document outlines the schema design for the `UserEvents` table in a Supabase database. The `UserEvents` table is designed to store events associated with users in a Supabase-powered application. These events could represent various user interactions, such as logins, registrations, purchases, etc.
+
+## Table Structure
+
+The `UserEvents` table is designed with the following columns:
+
+1. **id**: An auto-incrementing unique identifier for each event.
+2. **user_id**: A foreign key referencing the `id` column of the `Users` table, representing the user associated with the event.
+3. **event_type**: A string indicating the type of event (e.g., "login", "registration", "purchase").
+4. **event_timestamp**: A timestamp indicating when the event occurred.
+5. **details**: Additional details about the event, stored as JSON data.
+
+### Example Table Structure
+
+| Column Name      | Data Type        | Description                                                      |
+|------------------|------------------|------------------------------------------------------------------|
+| id               | SERIAL PRIMARY KEY | Unique identifier for each event.                                 |
+| user_id          | INTEGER          | Foreign key referencing the `id` column of the `Users` table.     |
+| event_type       | VARCHAR(100)     | Type of event (e.g., "login", "registration", "purchase").       |
+| event_timestamp  | TIMESTAMP        | Timestamp indicating when the event occurred.                    |
+| details          | JSONB            | Additional details about the event, stored as JSON data.         |
+
+## Usage
+
+### Creating the Table
+
+You can create the `UserEvents` table in your Supabase database using the following SQL command:
+
+```sql
+CREATE TABLE UserEvents (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES Users(id),
+    event_type VARCHAR(100),
+    event_timestamp TIMESTAMP,
+    details JSONB
+);
+
+

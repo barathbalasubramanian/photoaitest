@@ -120,6 +120,75 @@ Start the server
   npm run dev
 ```
 
+# Web Software Documentation
+
+## Welcome Page
+
+Firstly, users are prompted to authenticate by providing a valid user ID and password.
+
+---
+
+## Homepage
+
+Upon successful authentication, users are directed to the homepage, which offers two main options: "Create Event" and "Search Event."
+
+---
+
+## Create Event
+
+Users can create events by inputting three essential details: Event name, event date, and location. Optionally, they can generate digital invites for the event, including a countdown timer to the event day and Google Maps integration for navigation. Event data is stored in the "userevents" collection in Supabase. Upon event creation, several files are automatically generated and stored in an S3 bucket: Photograph_Encoded.json, Selfie_Encoded.json, WhatsApp_Send_Messages.json, WhatsApp_UnSend_Messages.json, and Uploaded_Images.json.
+
+To generate a digital invitation, users must provide the groom's name, bride's name, event location, and a link to the location. Additionally, a QR code can be generated for easy sharing of personal data, including name, phone number, email address, and photo. All digital invitation data is stored in the "userevents" collection in Supabase.
+
+---
+
+## Search Event
+
+Administrators can search for events using a search bar, which displays event details such as event name, date, location, bride name, and groom name. Additionally, there are six options available on this page: "Upload Folder," "Dashboard," "Digital Invite," "Report," "QR Code," and "Secret Key."
+
+---
+
+## Upload Folder
+
+Users can create folders for each event to organize images. When a folder is double-clicked, a dialog box opens allowing users to upload images. Images are stored in compressed format and in photographer-specific folders.
+
+---
+
+## Dashboard
+
+The dashboard features three sections: "All Photos," "Explore," and "Favorites." In "All Photos," images are listed according to folders selected in the navbar, with options to download images or add them to favorites. The "Explore" section lists all images, with filters available based on QR code-scanned data. "Favorites" allows users to download all favorited images stored in favorite.json in the S3 bucket.
+
+---
+
+## Digital Invite
+
+Generates digital invitations with bride and groom names and event location details, including navigation.
+
+---
+
+## Report
+
+Provides customer data entered via QR code forms.
+
+---
+
+## QR Code
+
+Generates QR code images for events.
+
+---
+
+## Secret Key
+
+Allows setting a secret key for each event, which users must provide to access the dashboard. The key is generated using this option.
+
+---
+
+## PrimeUser
+
+Prime users have access to view all studio events and their respective dashboards.
+
+
 
 # Supabase Table Schemas
 

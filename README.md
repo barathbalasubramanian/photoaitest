@@ -121,47 +121,56 @@ Start the server
 
 
 
+# Schema Design for Supabase Tables
 
+## Studio-Admin
 
-# Schema Design for UserEvents Table in Supabase
+- **UserID**: Text field to store the user's ID.
+- **Password**: Text field to store the user's password.
+- **is_verified**: Text field indicating whether the user is verified or not.
+- **WhatsApp_API**: Text field for storing WhatsApp API details.
+- **Is_Prime_User**: Boolean field indicating whether the user is a prime user or not.
+- **Logo**: Text field for storing the logo URL or path.
+- **Phone_No**: Numeric field to store the user's phone number.
+- **Location**: Text field to store the user's location.
+- **Website**: Text field to store the user's website URL.
+- **Is_Whatsapp_Verified**: Boolean field indicating whether the user's WhatsApp is verified or not.
 
-## Overview
+## UserEvents
 
-This document outlines the schema design for the `UserEvents` table in a Supabase database. The `UserEvents` table is designed to store events associated with users in a Supabase-powered application. These events could represent various user interactions, such as logins, registrations, purchases, etc.
+- **EventID**: Int8 field for unique event identification.
+- **UserID**: Text field referencing the user's ID.
+- **EventDate**: Date field indicating the date of the event.
+- **EventName**: Text field for storing the name of the event.
+- **EventDetail**: JSON field for storing detailed information about the event.
+- **FavouriteImages**: JSON field for storing favorite images related to the event.
+- **Customer_ID_UUID**: Text field referencing the customer's ID UUID.
+- **Mode_Of_Payment**: Text field indicating the mode of payment for the event.
+- **Full_Amount**: Int8 field indicating the full amount paid.
+- **Advance_Payment**: JSONB field for storing information about any advance payment made.
+- **Status**: Text field indicating the status of the event.
+- **DigitalInvite**: JSONB field for storing digital invite details.
+- **Location**: Text field indicating the location of the event.
+- **Folders**: JSONB field for storing folders related to the event.
+- **SelfieData**: JSONB field for storing selfie data related to the event.
+- **Secret_Key**: Text field for storing a secret key related to the event.
 
-## Table Structure
+## GreetingName
 
-The `UserEvents` table is designed with the following columns:
+- **Greeting_ID**: UUID field for unique greeting identification.
+- **Desc**: Text field for describing the greeting.
+- **Photo**: Text field for storing the photo URL or path.
+- **User_Name**: Text field for storing the user's name.
+- **Greeting_Name**: Text field for storing the name of the greeting.
 
-1. **id**: An auto-incrementing unique identifier for each event.
-2. **user_id**: A foreign key referencing the `id` column of the `Users` table, representing the user associated with the event.
-3. **event_type**: A string indicating the type of event (e.g., "login", "registration", "purchase").
-4. **event_timestamp**: A timestamp indicating when the event occurred.
-5. **details**: Additional details about the event, stored as JSON data.
+## CustomerName
 
-### Example Table Structure
+- **Customer_ID**: UUID field for unique customer identification.
+- **Customer_Name**: Text field for storing the customer's name.
+- **Mobile**: Int8 field for storing the customer's mobile number.
+- **User_Name**: Text field for storing the user's name.
+- **Email_ID**: Text field for storing the customer's email address.
+- **Location**: Text field for storing the customer's location.
 
-| Column Name      | Data Type        | Description                                                      |
-|------------------|------------------|------------------------------------------------------------------|
-| id               | SERIAL PRIMARY KEY | Unique identifier for each event.                                 |
-| user_id          | INTEGER          | Foreign key referencing the `id` column of the `Users` table.     |
-| event_type       | VARCHAR(100)     | Type of event (e.g., "login", "registration", "purchase").       |
-| event_timestamp  | TIMESTAMP        | Timestamp indicating when the event occurred.                    |
-| details          | JSONB            | Additional details about the event, stored as JSON data.         |
-
-## Usage
-
-### Creating the Table
-
-You can create the `UserEvents` table in your Supabase database using the following SQL command:
-
-```sql
-CREATE TABLE UserEvents (
-    id SERIAL PRIMARY KEY,
-    user_id INTEGER REFERENCES Users(id),
-    event_type VARCHAR(100),
-    event_timestamp TIMESTAMP,
-    details JSONB
-);
 
 

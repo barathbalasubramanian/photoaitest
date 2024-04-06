@@ -189,3 +189,42 @@ The `CustomerName` table stores information about customers.
 | :round_pushpin: Location             | TEXT      | Customer's location                                |
 
 
+
+# S3 Bucket Schema: Selfie-bucket
+
+This document outlines the structure and contents of the S3 bucket named "Selfie-bucket".
+
+
+Selfie-bucket
+│   
+├── Studio-admin 1
+│   ├── Compressed Images
+│   │   ├── Available Folders
+│   │   │   └── Images
+│   │   └── Desc: Contains compressed images of all photos in folder format.
+│   ├── Favourites.json
+│   │   └── Desc: JSON file containing favorite photos.
+│   ├── Favourites
+│   │   └── Photos in zip format
+│   │       └── Desc: Zip file containing favorite photos.
+│   ├── PhotographEncoded.json
+│   │   └── Desc: JSON file containing all photos in the studio for processing in AI model.
+│   ├── Photographers image
+│   │   └── Available Folders
+│   │       └── Images
+│   │           └── Desc: Contains photos organized in folders.
+│   ├── Selfie_Encoded.json
+│   │   └── Desc: JSON file containing photos in encoded format for processing in AI model.
+│   └── Selfie
+│       └── Username
+│           ├── Images in jpeg format
+│           └── Data.json
+│               └── Desc: JSON file containing user information.
+│           └── Desc: Contains images in JPEG format for the specific user.
+│       
+├── Studio-admin 2
+│   ├── ...
+│   
+└── Studio-admin 3
+    ├── ...
+

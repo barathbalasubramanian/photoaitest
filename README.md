@@ -189,9 +189,9 @@ The `CustomerName` table stores information about customers.
 | :round_pushpin: Location             | TEXT      | Customer's location                                |
 
 
-# Selfie-bucket
 
-This document outlines the structure and contents of the S3 bucket named "Selfie-bucket".
+
+# Selfie-bucket
 
 ├── Studio-admin 1
 │   ├── Compressed Images
@@ -223,3 +223,4 @@ This document outlines the structure and contents of the S3 bucket named "Selfie
 │   
 └── Studio-admin 3
     ├── ...
+

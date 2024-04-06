@@ -193,34 +193,32 @@ The `CustomerName` table stores information about customers.
 
 # Selfie-bucket
 
+```bash
+
+
 ├── Studio-admin 1
-│   ├── Compressed Images
-│   │   ├── Available Folders
+│   ├── Compressed Images ( Contains compressed images of all photos in folder format. )
+│   │   ├── All Available Folders
 │   │   │   └── Images
-│   │   └── Desc: Contains compressed images of all photos in folder format.
-│   ├── Favourites.json
-│   │   └── Desc: JSON file containing favorite photos.
+│   ├── Favourites.json ( JSON file containing favorite photos. )
 │   ├── Favourites
-│   │   └── Photos in zip format
-│   │       └── Desc: Zip file containing favorite photos.
-│   ├── PhotographEncoded.json
-│   │   └── Desc: JSON file containing all photos in the studio for processing in AI model.
+│   │   └── Photos in zip format ( Zip file containing favorite photos. )
+│   ├── PhotographEncoded.json ( JSON file containing all photos in the studio for processing in AI model. )
 │   ├── Photographers image
-│   │   └── Available Folders
-│   │       └── Images
-│   │           └── Desc: Contains photos organized in folders.
-│   ├── Selfie_Encoded.json
-│   │   └── Desc: JSON file containing photos in encoded format for processing in AI model.
+│   │   └── All Available Folders ( Contains photos organized in folders. )
+│   │       └── Images 
+│   ├── Selfie_Encoded.json ( JSON file containing photos in encoded format for processing in AI model. ) 
 │   └── Selfie
-│       └── Username
+│       └── All Users ( Username bacame the name of the folder. ) ( Contains images in JPEG format for the specific user. ) 
 │           ├── Images in jpeg format
-│           └── Data.json
-│               └── Desc: JSON file containing user information.
-│           └── Desc: Contains images in JPEG format for the specific user.
-│       
+│           └── Data.json ( JSON file containing user information. ) 
 ├── Studio-admin 2
 │   ├── ...
 │   
 └── Studio-admin 3
-    ├── ...
+    ├── ... 
+
+
+```
+
 

@@ -147,7 +147,7 @@ export default function DigitalInvite({eventData})  {
       <div className={Styles.container}>
         <div className={Styles.imgDiv}>
           <img src='/svg/potrait.jpg' alt="" className={Styles.image} />
-          <div className={Styles.logoDiv}><img src={Logo || ""} alt="Logo" style={{width:"9em !important"}} /></div>
+          <div className={Styles.logoDiv}><img src={Logo || ""} alt="Logo" className={Styles.logoImg} /></div>
           <div className={Styles.bride}>{brideName}</div>
           <div className={Styles.weds}>Weds</div>
           <div className={Styles.groom}>{groomName}</div>

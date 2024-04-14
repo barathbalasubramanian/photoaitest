@@ -124,5 +124,10 @@
 .logoDiv {
     position: absolute;
     max-width: 44em;
-    top: -3%;
+    top: 1%;
+}
+
+.logoImg {
+    width: 75px;
+    height: 75px;
 }

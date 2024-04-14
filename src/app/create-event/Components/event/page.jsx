@@ -27,6 +27,7 @@ export default function Event({UserId}) {
   const [groomName, setGroomName] = useState("");
   const [location_, setLocation_] = useState("");
   const [youtubeLink, setYoutubeLink] = useState("");
+  const [mapLink , setmapLink] = useState("");
 
   const handleGenerateQRCode = async () => {
     // Storing data
@@ -56,7 +57,8 @@ export default function Event({UserId}) {
       brideName,
       groomName,
       location_,
-      youtubeLink
+      youtubeLink,
+      mapLink
     );
     console.log(message);
     Toast.fire({
@@ -171,6 +173,7 @@ export default function Event({UserId}) {
                 <TextField id="event-name" label="Bride Name" variant="outlined" fullWidth margin="normal" className={Styles.diaInp} value={brideName} onChange={(e) => setBrideName(e.target.value)}/>
                 <TextField id="event-date" label="Groom Name" variant="outlined" fullWidth margin="normal" className={Styles.diaInp} value={groomName} onChange={(e) => setGroomName(e.target.value)}/>
                 <TextField id="location" label="Location" variant="outlined" fullWidth margin="normal" className={Styles.diaInp} value={location_} onChange={(e) => setLocation_(e.target.value)}/>
+                <TextField id="map-link" label="Map Link (Optional)" variant="outlined" fullWidth margin="normal" className={Styles.diaInp} value={mapLink} onChange={(e) => setmapLink(e.target.value)}/>
                 <TextField id="additional-info" label="YouTube Link (Optional)" variant="outlined" fullWidth margin="normal" className={Styles.diaInp} value={youtubeLink} onChange={(e) => setYoutubeLink(e.target.value)}/>
                 <div className={Styles.btndiv}>
                   <button className={Styles.savebtn} onClick={handleSave}>Save</button>

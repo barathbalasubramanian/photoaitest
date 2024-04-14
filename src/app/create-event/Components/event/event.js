@@ -4,7 +4,7 @@ import { cookies } from 'next/headers'
 import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 // import axios from "axios";
 import { createClient } from '@supabase/supabase-js'
-export default async function CreateEvent(eventName,date,month,year,location,brideName,groomName,location_,youtubeLink){
+export default async function CreateEvent(eventName,date,month,year,location,brideName,groomName,location_,youtubeLink,mapLink){
 
     if ( !eventName || !location || !date || !month || !year )
     {return {message:"Please fill all feilds ...",icon:'warning'}}
@@ -30,7 +30,8 @@ export default async function CreateEvent(eventName,date,month,year,location,bri
                 "bridename":`${brideName}`,
                 "groomname":`${groomName}`,
                 "location_":`${location_}`,
-                "utubelink":`${youtubeLink}`
+                "utubelink":`${youtubeLink}`,
+                "maplink": `${mapLink}`
             }],
             "Location" : `${location}`,
             "Folders": []

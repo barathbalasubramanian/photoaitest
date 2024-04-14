@@ -97,3 +97,26 @@
 .lables {
     font-size: 12px;
 }
+
+.getDirection{
+    cursor: pointer;
+    position: absolute;
+    top: 56%;
+}
+
+.getbtn{
+    display: flex;
+    gap: .5em;
+    align-items: center;
+    justify-content: space-between;
+    border: none;
+    outline: none;
+    border: 1px solid burlywood;
+    border-radius: 12px;
+    padding: 4px 8px;
+}
+
+.videoDiv{
+    position: absolute;
+    top: 73%;
+}

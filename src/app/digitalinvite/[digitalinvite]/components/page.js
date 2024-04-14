@@ -1,6 +1,9 @@
 "use client"
 import React, { useState, useEffect } from "react";
 import Styles from "./page.module.css";
+import GetEventData from "./getEventdata";
+import FmdGoodRoundedIcon from '@mui/icons-material/FmdGoodRounded';
+import { WidthFull } from "@mui/icons-material";
 
 export default function DigitalInvite({eventData})  {
 
@@ -11,6 +14,10 @@ export default function DigitalInvite({eventData})  {
  
   const [formattedmonth , setformattedmonth] = useState("");
   const [formatteddate , setformatteddate] = useState("");
+
+  const [eventname , setevename] = useState("");
+  const [mapLink , setmapLink] = useState("");
+  const [utubeLink , setutubeLink] = useState("");
 
   const monthMapping = {
     "01": "January",
@@ -51,10 +58,25 @@ export default function DigitalInvite({eventData})  {
       setInputDate(eventData.eventDate);
       setbrideName(eventData.brideName);
       setgroomName(eventData.groomName);
-      setloc_(eventData.loc_)
-      console.log(eventData,"Invite")
+      setloc_(eventData.loc_);
+      setevename(eventData.eventname);
+      GetData(eventData.eventname);
     }
   }, [eventData]);
+
+  const GetData = async(name) =>{
+    console.log(`Getting Data... from ${name}`)
+    const SupaBaseData = await GetEventData(name);
+    console.log(SupaBaseData);
+    setmapLink(SupaBaseData["maplink"]);
+    // setutubeLink(SupaBaseData["utubelink"]);
+    const originalUrl = SupaBaseData["utubelink"];
+    console.log(SupaBaseData["utubelink"],"MapLink")
+    const videoId = originalUrl.split("v=")[1];
+    const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+    setutubeLink(embedUrl);
+  }
+
 
   const [year, month, date] = inputDate.split("-");
   const targetDate = `${year}-${month}-${date}T00:00:00`;
@@ -107,6 +129,11 @@ export default function DigitalInvite({eventData})  {
     return number < 10 ? `0${number}` : `${number}`;
   };
 
+  const handleButtonClick = () => {
+    console.log("button clicked");
+    window.location.href = mapLink;
+  };
+
   return (
     <div>
       <div className={Styles.container}>
@@ -121,6 +148,16 @@ export default function DigitalInvite({eventData})  {
             </div>
             <div>{loc_}</div>
           </div>
+
+          {/* Get Direction */}
+          {
+            mapLink && (
+              <div className={`${Styles.getDirection}`}>
+                <button onClick={handleButtonClick} className={`${Styles.getbtn}`} > <div><FmdGoodRoundedIcon style={{width:"20px !important"}} /> </div> Get  Direction</button>
+              </div>
+            )
+          }
+
           <div className={Styles.remCon}>
             {timeLeft.days > 0 && <div className={Styles.eachRem}><div className={Styles.values}>{`${timeLeft.days}:`}</div><div className={Styles.lables}>Days</div></div>}
             {
@@ -140,9 +177,26 @@ export default function DigitalInvite({eventData})  {
               </>
             }
           </div>
+
+          {/* Video */}
+          {
+            utubeLink && (
+              <div className={Styles.videoDiv}>
+                <iframe
+                  width="280"
+                  height="150"
+                  src= {utubeLink}
+                  title="YouTube video player"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                ></iframe>
+              </div>
+            )
+          }
+
         </div>
       </div>
     </div>
   );
 };
 
+// src="https://www.youtube.com/watch?v=kwsnJfQb9CA"

@@ -130,7 +130,7 @@ export default function Search({ AllEventData, SuperAdmin }) {
 
         const jsonData = JSON.stringify(eventData);
         const encodedData = encodeURIComponent(jsonData);
-        router.push(`/digitalinvite/${eveDate}_${groomName}_${brideName}_${loc_}`);
+        router.push(`/digitalinvite/${eveDate}_${groomName}_${brideName}_${loc_.split(" ").join(".")}_${month.split("_").join(".")}`);
         // window.location = `/digitalinvite?data=${encodedData}`;
       }
       else if ( id === "qrcode" ){

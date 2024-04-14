@@ -1,9 +1,10 @@
 "use client"
 import React, { useState, useEffect } from "react";
 import Styles from "./page.module.css";
-import GetEventData from "./getEventdata";
 import FmdGoodRoundedIcon from '@mui/icons-material/FmdGoodRounded';
-import { WidthFull } from "@mui/icons-material";
+
+import GetLogoUrl from "./getLogo";
+import GetEventData from "./getEventdata";
 
 export default function DigitalInvite({eventData})  {
 
@@ -18,6 +19,7 @@ export default function DigitalInvite({eventData})  {
   const [eventname , setevename] = useState("");
   const [mapLink , setmapLink] = useState("");
   const [utubeLink , setutubeLink] = useState("");
+  const [Logo, setLogo] = useState("");
 
   const monthMapping = {
     "01": "January",
@@ -61,6 +63,7 @@ export default function DigitalInvite({eventData})  {
       setloc_(eventData.loc_);
       setevename(eventData.eventname);
       GetData(eventData.eventname);
+      GetLogo();
     }
   }, [eventData]);
 
@@ -77,6 +80,11 @@ export default function DigitalInvite({eventData})  {
     setutubeLink(embedUrl);
   }
 
+  const GetLogo = async() => {
+    const logo = await GetLogoUrl();
+    setLogo(logo);
+    console.log(logo)
+  }
 
   const [year, month, date] = inputDate.split("-");
   const targetDate = `${year}-${month}-${date}T00:00:00`;
@@ -139,6 +147,7 @@ export default function DigitalInvite({eventData})  {
       <div className={Styles.container}>
         <div className={Styles.imgDiv}>
           <img src='/svg/potrait.jpg' alt="" className={Styles.image} />
+          <div className={Styles.logoDiv}><img src={Logo || ""} alt="Logo" style={{width:"9em !important"}} /></div>
           <div className={Styles.bride}>{brideName}</div>
           <div className={Styles.weds}>Weds</div>
           <div className={Styles.groom}>{groomName}</div>

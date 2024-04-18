@@ -11,6 +11,14 @@ const videoConstraints = {
     const webcamRef = React.useRef(null);
     const [Retake,retakevalue] = useState(false);
     const [image,imagevalue] = useState('');
+    const downloadImage = (imageSrc, imageName) => {
+        const a = document.createElement('a');
+        a.href = imageSrc;
+        a.download = imageName;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    };
     const capture = (async() => {
         const imageSrc = await webcamRef.current.getScreenshot();
         console.log(imageSrc);
@@ -19,7 +27,11 @@ const videoConstraints = {
         const blob = new Blob([new Uint8Array(Array.from(binaryData).map(char => char.charCodeAt(0)))], { type: 'image/jpeg' });
         imagevalue(imageSrc);
         setSelfie(blob);
+
+        // Download
+        downloadImage(imageSrc, 'selfie.jpg');
       }
+      
     );
     return (
       <>

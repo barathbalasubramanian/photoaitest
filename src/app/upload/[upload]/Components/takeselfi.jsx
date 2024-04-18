@@ -7,7 +7,7 @@ const videoConstraints = {
     height: 4000,
     facingMode: "user"
 };
-  const TakeSelfi = ({setSelfie,captureselfivalue}) => {
+    const TakeSelfi = ({setSelfie,captureselfivalue}) => {
     const webcamRef = React.useRef(null);
     const [Retake,retakevalue] = useState(false);
     const [image,imagevalue] = useState('');
@@ -43,7 +43,7 @@ const videoConstraints = {
         // If you want to use the blob for other purposes, you can keep the following line.
         setSelfie(blob);
       }
-      
+
     );
     return (
       <>

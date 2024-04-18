@@ -1,88 +1,59 @@
 import React, { useState } from "react";
+import Webcam from "react-webcam";
 import Styles from "./page.module.css";
 
-const TakeSelfi = ({ setSelfie, captureselfivalue }) => {
-  const [Retake, setRetake] = useState(false);
-  const [image, setImage] = useState('');
-
-  const captureImage = async () => {
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
-      const track = stream.getVideoTracks()[0];
-      const imageCapture = new ImageCapture(track);
-      const blob = await imageCapture.takePhoto();
-
-      const imageUrl = URL.createObjectURL(blob);
-
-      setImage(imageUrl);
-      setSelfie(blob); // Set the captured image blob
-    } catch (error) {
-      console.error('Error capturing image:', error);
-    }
-  };
-
-  return (
-    <div className={Styles.TakeSelfi}>
-      <div>
-        <div>
-          <h4>Capture Selfie</h4>
-          <strong>Keep Face in the Center</strong>
-          <div>and</div>
-          <div className={Styles.SecondStrong}>Press Capture</div>
-          <div
-            className={Styles.CrossIcon}
-            onClick={() => captureselfivalue(false)}
-          >
-            &#x2716;
-          </div>
-        </div>
-        <div className={Styles.PositionRelative}>
-          {!Retake ? (
-            <div className={Styles.LottiePlayerDiv}>
-              <lottie-player
-                src="/svg/facescan.json"
-                className={Styles.LottiePlayer}
-                background="transparent"
-                speed="0.5"
-                style={{ width: '300px', height: '300px' }}
-                direction="0"
-                mode="normal"
-                loop
-                autoplay
-              ></lottie-player>
-            </div>
-          ) : (
-            <img
-              src={image}
-              alt=""
-              style={{
-                height: '300px',
-                width: '300px',
-                objectFit: 'cover',
-                borderRadius: '30%',
-                transform: 'scaleX(-1)'
-              }}
-            />
-          )}
-        </div>
-        <div className={Styles.capturebtn}>
-          {Retake && (
-            <div onClick={() => setRetake(false)}>Re-Take</div>
-          )}
-          <div onClick={() => {
-            if (Retake) {
-              captureselfivalue(false);
-            } else {
-              captureImage();
-              setRetake(true);
-            }
-          }}>
-            {Retake ? 'Submit' : 'Capture'}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+const videoConstraints = {
+    width: 4000,
+    height: 4000,
+    facingMode: "user"
 };
 
-export default TakeSelfi;
+const TakeSelfi = ({ setSelfie, captureselfivalue }) => {
+    const webcamRef = React.useRef(null);
+    const [Retake, retakevalue] = useState(false);
+    const [image, imagevalue] = useState('');
+
+    const downloadImage = (imageSrc, imageName) => {
+        // Create a new anchor element
+        const a = document.createElement('a');
+        // Set the href attribute to the image source
+        a.href = imageSrc;
+        // Set the download attribute to the desired file name
+        a.download = imageName;
+        // Append the anchor element to the document body
+        document.body.appendChild(a);
+        // Simulate a click on the anchor element to trigger the download
+        a.click();
+        // Remove the anchor element from the document body
+        document.body.removeChild(a);
+    };
+
+    const capture = async () => {
+        // Capture the image from the webcam
+        const imageSrc = await webcamRef.current.getScreenshot();
+        // Set the captured image source to state
+        imagevalue(imageSrc);
+        
+        // Download the image
+        downloadImage(imageSrc, 'selfie.jpg');
+
+        // Note: You're already setting the captured image as blob in 'setSelfie' state. 
+        // If you want to use the blob for other purposes, you can keep the following line.
+        setSelfie(blob);
+    };
+
+    return (
+        <div>
+            <Webcam
+                audio={false}
+                height={720}
+                ref={webcamRef}
+                screenshotFormat="image/jpeg"
+                width={1280}
+                videoConstraints={videoConstraints}
+                className={Styles.Webcam}
+            />
+            <button onClick={capture}>Capture</button>
+        </div>
+    );
+};

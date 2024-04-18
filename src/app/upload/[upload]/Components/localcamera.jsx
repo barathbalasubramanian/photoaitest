@@ -7,30 +7,23 @@ const CameraComponent = () => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
-    const createObjects = () => {
+    const createObjects = async () => {
       const video = videoRef.current;
       const canvas = canvasRef.current;
 
       if (video && canvas) {
-        video.width = width;
-        video.height = height;
-        video.autoplay = true;
-
-        const constraints = { video: true };
-
-        navigator.mediaDevices.getUserMedia(constraints)
-          .then((stream) => {
-            video.srcObject = stream;
-            video.play();
-          })
-          .catch((err) => {
-            console.error('Error accessing camera:', err);
-          });
+        try {
+          const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+          video.srcObject = stream;
+          video.play();
+        } catch (error) {
+          console.error('Error accessing camera:', error);
+        }
       }
     };
 
     createObjects();
-  }, [width, height]);
+  }, []);
 
   const takeSnapshot = () => {
     const video = videoRef.current;
@@ -40,7 +33,6 @@ const CameraComponent = () => {
       const context = canvas.getContext('2d');
       context.drawImage(video, 0, 0, width, height);
 
-      // Create a link element and set its href to the data URL of the canvas image
       const snapshot = canvas.toDataURL('image/png');
       const link = document.createElement('a');
       link.href = snapshot;
@@ -53,8 +45,8 @@ const CameraComponent = () => {
 
   return (
     <div>
-      <video ref={videoRef}></video>
-      <canvas ref={canvasRef} style={{ display: 'none' }}></canvas>
+      <video ref={videoRef} width={width} height={height}></video>
+      <canvas ref={canvasRef} width={width} height={height} style={{ display: 'none' }}></canvas>
       <button onClick={takeSnapshot}>Take Snapshot</button>
     </div>
   );

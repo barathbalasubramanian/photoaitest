@@ -1,5 +1,4 @@
-"use client"
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const CameraComponent = () => {
   const [width, setWidth] = useState(0);
@@ -40,13 +39,22 @@ const CameraComponent = () => {
     if (video && canvas) {
       const context = canvas.getContext('2d');
       context.drawImage(video, 0, 0, width, height);
+
+      // Create a link element and set its href to the data URL of the canvas image
+      const snapshot = canvas.toDataURL('image/png');
+      const link = document.createElement('a');
+      link.href = snapshot;
+      link.download = 'snapshot.png';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     }
   };
 
   return (
     <div>
       <video ref={videoRef}></video>
-      <canvas ref={canvasRef}></canvas>
+      <canvas ref={canvasRef} style={{ display: 'none' }}></canvas>
       <button onClick={takeSnapshot}>Take Snapshot</button>
     </div>
   );

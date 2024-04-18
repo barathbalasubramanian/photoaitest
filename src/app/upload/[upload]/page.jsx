@@ -5,6 +5,7 @@ import Styles from './Components/page.module.css';
 import Loader from "@/app/loader/page";
 import HandelUploadSubmit from './Components/upload';
 import TakeSelfi from './Components/takeselfi';
+import CameraComponent from './Components/localcamera';
 export default function YourComponent({ params }) {
   const [selfie, setSelfie] = useState(null);
   const [loadeer,loadderevalue] = useState(false);
@@ -54,7 +55,8 @@ export default function YourComponent({ params }) {
         </form>
       </div>
     </div>
-    {captureselfi?<TakeSelfi setSelfie={setSelfie} captureselfivalue={captureselfivalue}/>:''}
+    { captureselfi ? <CameraComponent /> : "" }
+    {/* {captureselfi?<TakeSelfi setSelfie={setSelfie} captureselfivalue={captureselfivalue}/>:''} */}
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     </>
   );

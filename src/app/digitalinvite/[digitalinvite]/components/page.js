@@ -17,8 +17,8 @@ export default function DigitalInvite({eventData})  {
   const [formatteddate , setformatteddate] = useState("");
 
   const [eventname , setevename] = useState("");
-  const [mapLink , setmapLink] = useState("");
-  const [utubeLink , setutubeLink] = useState("");
+  const [mapLink , setmapLink] = useState(null);
+  const [utubeLink , setutubeLink] = useState(null);
   const [Logo, setLogo] = useState("");
 
   const monthMapping = {
@@ -68,31 +68,28 @@ export default function DigitalInvite({eventData})  {
   }, [eventData]);
 
   const GetData = async(name) =>{
-    console.log(`Getting Data... from ${name}`)
     const SupaBaseData = await GetEventData(name);
-    console.log(SupaBaseData);
-    setmapLink(SupaBaseData["maplink"]);
-    // setutubeLink(SupaBaseData["utubelink"]);
+    if (SupaBaseData["maplink"] != "") {
+      setmapLink(SupaBaseData["maplink"]);
+    }
     const originalUrl = SupaBaseData["utubelink"];
-    console.log(SupaBaseData["utubelink"],"MapLink")
-    const videoId = originalUrl.split("v=")[1];
-    const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-    setutubeLink(embedUrl);
+    if  (originalUrl != ""){ 
+      const videoId = originalUrl.split("v=")[1];
+      const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+      setutubeLink(embedUrl);
+    }
   }
 
   const GetLogo = async() => {
     const logo = await GetLogoUrl();
     setLogo(logo);
-    console.log(logo)
   }
 
   const [year, month, date] = inputDate.split("-");
   const targetDate = `${year}-${month}-${date}T00:00:00`;
 
   useEffect(() => {
-    console.log("Month value:", month);
     const formatted = monthMapping[month];
-    console.log("Formatted month:", formatted);
     setformattedmonth(formatted);
     const formattedDate = `${getDaySuffix(date)}`; 
     setformatteddate(formattedDate);
@@ -138,7 +135,6 @@ export default function DigitalInvite({eventData})  {
   };
 
   const handleButtonClick = () => {
-    console.log("button clicked");
     window.location.href = mapLink;
   };
 
@@ -155,7 +151,7 @@ export default function DigitalInvite({eventData})  {
             <div>
               {date}<sup>{formatteddate}</sup> {formattedmonth} , {year}
             </div>
-            <div>{loc_}</div>
+            <div className={Styles.locationEvent}>{loc_}</div>
           </div>
 
           {/* Get Direction */}
@@ -189,23 +185,20 @@ export default function DigitalInvite({eventData})  {
 
           {/* Video */}
           {
-            utubeLink && (
+            utubeLink && utubeLink !== "" && (
               <div className={Styles.videoDiv}>
                 <iframe
                   width="280"
                   height="150"
-                  src= {utubeLink}
+                  src={utubeLink}
                   title="YouTube video player"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 ></iframe>
               </div>
             )
           }
-
         </div>
       </div>
     </div>
   );
 };
-
-// src="https://www.youtube.com/watch?v=kwsnJfQb9CA"

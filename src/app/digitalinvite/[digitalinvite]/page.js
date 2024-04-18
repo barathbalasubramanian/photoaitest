@@ -10,8 +10,7 @@ export default function Home({params}) {
     const brideName = parts[2];
     const loc_ = parts[3].split(".").join(" ");
     const eventName = parts[4].split(".").join("_");
-    console.log(eventName);
-
+    
     const eventData = {
         eventDate: eveDate,
         groomName: groomName,

@@ -190,6 +190,12 @@ export async function GetEventsAmountByUUID(UUID,name){
     const result = await supabase.from('UserEvents').select('Advance_Payment').eq('Customer_ID_UUID',UUID).eq('EventName',name);
     return result.data
 }
+export async function GetEventsTotalAmountByUUID(UUID,name){
+    noStore();
+    const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_KEY);
+    const result = await supabase.from('UserEvents').select('Full_Amount').eq('Customer_ID_UUID',UUID).eq('EventName',name);
+    return result.data
+}
 export async function UpdateEventsAmountByUUID(UUID,name,Advance_Payment){
     noStore();
     const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_KEY);

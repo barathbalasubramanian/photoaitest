@@ -5,12 +5,13 @@ import Drawer from '@mui/material/Drawer';
 import Style from "./edit.module.css"
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddPaymentModes from './AddPaymentModes';
-import { GetEventsAmountByUUID,UpdateEventsAmountByUUID } from './AllFunctions';
+import { GetEventsAmountByUUID,GetEventsTotalAmountByUUID,UpdateEventsAmountByUUID } from './AllFunctions';
 import downloadCSV from './DownloadCSV';
 import { sendsmscrmofcustomersetelement } from '../../SendSMS';
 export default function AddPayment({uuid,name,cusname,Mobile}) {
   const [Data,DataValue] = React.useState([]);
   const [total,Settotal] = React.useState(0);
+  const [totalAmount,settotalAmount] = React.useState(0);
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -34,8 +35,13 @@ export default function AddPayment({uuid,name,cusname,Mobile}) {
     }
     Settotal(tott);
   }
+  const GetTotalAmount = async () => {
+    const TotalAmountForEvent = await GetEventsTotalAmountByUUID(uuid,name);
+    settotalAmount(TotalAmountForEvent[0].Full_Amount);
+  }
   React.useEffect(()=>{
-    GetAllAmount()
+    GetAllAmount()  ,
+    GetTotalAmount()
   },[])
   const HandelDelete = async(itemKey)=>{
     let Array = [];
@@ -53,7 +59,8 @@ export default function AddPayment({uuid,name,cusname,Mobile}) {
     DataValue(Array);
   }
   const HandelSendSMSBTN = async()=>{
-    sendsmscrmofcustomersetelement(`${cusname} (${name.split('-')[1].split('_').join(' ')})`,total,Mobile);
+    // sendsmscrmofcustomersetelement(`${cusname} (${name.split('-')[1].split('_').join(' ')})`,total,Mobile);
+    sendsmscrmofcustomersetelement(`${cusname}`,total,Mobile,`${name.split('-')[1].split('_').join(' ')}`,totalAmount);
     alert('Message Sent ...')
   }
   const list = (anchor) => (

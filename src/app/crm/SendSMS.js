@@ -69,7 +69,7 @@ export async function sendsmscrmofcustomersetelement(name,bal,Mobile,eventname,f
         const Whatsapp_ = await supabase.from('Studio-Admin').select('WhatsApp_API,Phone_No,Is_Whatsapp_Verified').eq('UserID', User_Name);
         const WhatUrl = Whatsapp_.data[0].WhatsApp_API;
         if(Whatsapp_.data[0].Is_Whatsapp_Verified){
-            const text = `${WhatUrl}&phone=${Mobile}&text=account_message_ut&priority=wa&stype=normal&Params=${name},₹${bal},${User_Name}`
+            const text = `${WhatUrl}&phone=${Mobile}&text=account_message_ut&priority=wa&stype=normal&Params=${name},₹${full-bal},${User_Name}`
             await hitAPI(text);;
         }else{
             const Text = `${WhatUrl}&number=91${Mobile}&type=text&message=%0A Hello ${name},%0A%0AWe hope this message finds you well. We'd like to provide you with an update regarding your account for ${eventname} event with us. %0A%0AThe current outstanding balance to be settled for ${eventname} event is ₹${full-bal}%0A%0AShould you have any queries or require further clarification, please feel free to get in touch with us. %0A%0ABest Regards,%0A${User_Name}`;
@@ -91,10 +91,11 @@ export async function sendgreatingmessages(SendingData,ArrayOfNumbers) {
         const WhatUrl = Whatsapp_.data[0].WhatsApp_API;
         for(let a = 0;a<ArrayOfNumbers.length;a++){
             if(Whatsapp_.data[0].Is_Whatsapp_Verified){
-                const text = `${WhatUrl}phone=${ArrayOfNumbers[a][0]}&text=${SendingData.Greeting_Name},%0A%0A${SendingData.Desc}&media_url=${SendingData.Photo}&priority=wa&stype=normal&Params=${ArrayOfNumbers[a][1]}`
+                // const text = `${WhatUrl}phone=${ArrayOfNumbers[a][0]}&text=${SendingData.Greeting_Name},%0A%0A${SendingData.Desc}&media_url=${SendingData.Photo}&priority=wa&stype=normal&Params=${ArrayOfNumbers[a][1]}`
+                const text = `${WhatUrl}phone=${ArrayOfNumbers[a][0]},%0A%0A${SendingData.Desc}&media_url=${SendingData.Photo}&priority=wa&stype=normal&Params=${ArrayOfNumbers[a][1]}`
                 await hitAPI(text);;
             }else{
-                const Text = `${WhatUrl}&number=91${ArrayOfNumbers[a][0]}&image&message=Hi ${ArrayOfNumbers[a][1]},%0A%0A${SendingData.Greeting_Name},%0A%0A${SendingData.Desc}&media_url=${SendingData.Photo}`;
+                const Text = `${WhatUrl}&number=91${ArrayOfNumbers[a][0]}&image&message=Hi ${ArrayOfNumbers[a][1]},%0A%0A${SendingData.Desc}&media_url=${SendingData.Photo}`;
                 await hitAPI(Text);;
             }
         }

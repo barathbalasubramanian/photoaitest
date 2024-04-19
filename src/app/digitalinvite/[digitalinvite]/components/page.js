@@ -63,7 +63,7 @@ export default function DigitalInvite({eventData})  {
       setloc_(eventData.loc_);
       setevename(eventData.eventname);
       GetData(eventData.eventname);
-      GetLogo();
+      GetLogo(eventData.eventname.split("-")[0]);
     }
   }, [eventData]);
 
@@ -80,8 +80,8 @@ export default function DigitalInvite({eventData})  {
     }
   }
 
-  const GetLogo = async() => {
-    const logo = await GetLogoUrl();
+  const GetLogo = async(UserID) => {
+    const logo = await GetLogoUrl(UserID);
     setLogo(logo);
   }
 

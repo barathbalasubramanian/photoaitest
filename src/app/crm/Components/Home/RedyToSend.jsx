@@ -74,7 +74,7 @@ export default function ReadyToSendSMS({SendingData}) {
                         <input type="text" placeholder="Search" style={{backgroundColor:'#13192f'}} onChange={(e)=>{SetCustomerData(searchFun(e.target.value,ConstData))}}/>
                         <img src="/svg/crmsearch.svg" alt="search" />
                     </div>
-                    <div>
+                    <div className={Style.ContainerTable}>
                         <div>
                             {CustomerData.map((item,index)=>{
                                 return <TableCkeckBox item={item} CheckValue={ArrayOfNumbers} SetArrayValue={SetArrayValue} key={index}/>

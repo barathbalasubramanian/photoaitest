@@ -271,3 +271,9 @@
       font-size: 5vw;
     }
   }
+
+
+.ContainerTable{
+  max-height: 60vh;
+  overflow: scroll;
+}

@@ -81,9 +81,7 @@ export default function DigitalInvite({eventData})  {
   }
 
   const GetLogo = async(UserID) => {
-    console.log(UserID);
     const logo = await GetLogoUrl(UserID);
-    console.log(logo,"Logo");
     setLogo(logo);
   }
 
@@ -146,9 +144,9 @@ export default function DigitalInvite({eventData})  {
         <div className={Styles.imgDiv}>
           <img src='/svg/potrait.jpg' alt="" className={Styles.image} />
           <div className={Styles.logoDiv}><img src={Logo || ""} alt="Logo" className={Styles.logoImg} /></div>
-          <div className={Styles.bride}>{brideName}</div>
+          <div className={Styles.bride}>{groomName}</div>
           <div className={Styles.weds}>Weds</div>
-          <div className={Styles.groom}>{groomName}</div>
+          <div className={Styles.groom}>{brideName}</div>
           <div className={Styles.date}>
             <div>
               {date}<sup>{formatteddate}</sup> {formattedmonth} , {year}

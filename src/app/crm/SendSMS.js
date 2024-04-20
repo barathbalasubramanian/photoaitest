@@ -89,14 +89,23 @@ export async function sendgreatingmessages(SendingData,ArrayOfNumbers) {
         const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_KEY);
         const Whatsapp_ = await supabase.from('Studio-Admin').select('WhatsApp_API,Phone_No,Is_Whatsapp_Verified').eq('UserID', User_Name);
         const WhatUrl = Whatsapp_.data[0].WhatsApp_API;
+        let hits = 0;
         for(let a = 0;a<ArrayOfNumbers.length;a++){
+            
             if(Whatsapp_.data[0].Is_Whatsapp_Verified){
                 // const text = `${WhatUrl}phone=${ArrayOfNumbers[a][0]}&text=${SendingData.Greeting_Name},%0A%0A${SendingData.Desc}&media_url=${SendingData.Photo}&priority=wa&stype=normal&Params=${ArrayOfNumbers[a][1]}`
                 const text = `${WhatUrl}phone=${ArrayOfNumbers[a][0]},%0A%0A${SendingData.Desc}&media_url=${SendingData.Photo}&priority=wa&stype=normal&Params=${ArrayOfNumbers[a][1]}`
-                await hitAPI(text);;
+                await hitAPI(text);
+                hits++
             }else{
                 const Text = `${WhatUrl}&number=91${ArrayOfNumbers[a][0]}&image&message=Hi ${ArrayOfNumbers[a][1]},%0A%0A${SendingData.Desc}&media_url=${SendingData.Photo}`;
-                await hitAPI(Text);;
+                await hitAPI(Text);
+                hits++
+            }
+
+            if (hits % 5 === 0) {
+                console.log("Reached 5 hits. Waiting for 5 Seconds...");
+                await new Promise(resolve => setTimeout(resolve, 5000));
             }
         }
         return true;

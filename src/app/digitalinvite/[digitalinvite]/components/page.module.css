@@ -126,12 +126,13 @@
 .logoDiv {
     position: absolute;
     max-width: 44em;
-    top: 1%;
+    top: -1%;
 }
 
 .logoImg {
-    width: 75px;
-    height: 75px;
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
 }
 
 .locationEvent {

@@ -81,7 +81,9 @@ export default function DigitalInvite({eventData})  {
   }
 
   const GetLogo = async(UserID) => {
+    console.log(UserID);
     const logo = await GetLogoUrl(UserID);
+    console.log(logo,"Logo");
     setLogo(logo);
   }
 

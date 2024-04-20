@@ -55,9 +55,9 @@ const CustomWebcam = () => {
 
   return (
     <div className="container">
-      <video ref={videoRef} autoPlay />
-      <canvas ref={canvasRef} style={{ display: "none" }} />
-      <img ref={photoRef} alt="webcam" />
+      <video ref={videoRef} autoPlay style={{width:"25em"}}/>
+      <canvas ref={canvasRef} style={{ display: "none" }}/>
+      <img ref={photoRef} alt="webcam" style={{width:"25em"}}/>
       <button onClick={takePhoto}>Take Photo</button>
       <button onClick={closeCamera}>Close Camera</button>
       <button onClick={downloadImage}>Download Image</button>

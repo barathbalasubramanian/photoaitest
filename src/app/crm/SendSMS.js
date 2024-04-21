@@ -78,7 +78,7 @@ export async function sendsmscrmofcustomersetelement(name,bal,Mobile,eventname,f
         return true;
     } catch (error) {
         console.error('Error:', error);
-        return false;
+        return error;
     }
 }
 export async function sendgreatingmessages(SendingData,ArrayOfNumbers) {
@@ -111,6 +111,6 @@ export async function sendgreatingmessages(SendingData,ArrayOfNumbers) {
         return true;
     } catch (error) {
         console.error('Error:', error);
-        return false;
+        return error;
     }
 }

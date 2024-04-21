@@ -299,8 +299,16 @@ export default function Search({ AllEventData, SuperAdmin }) {
   };
 
   const SendSMSFunction = async () => {
+    console.log("Sending...")
     LoaderStatsValue(true);
     const response = await sendsms(month);
+    if (response) {
+      toast.success("Message Send Successfully");
+    } 
+    else {
+      toast.warning(response);
+    }
+    console.log(response)
     LoaderStatsValue(false);
   };
 

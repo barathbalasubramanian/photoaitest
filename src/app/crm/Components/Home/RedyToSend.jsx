@@ -7,6 +7,8 @@ import { isEqual } from 'lodash';
 import { GetCustomerFuntion } from './AllFunctions';
 import { sendgreatingmessages } from '../../SendSMS';
 import { searchFun } from './DownloadCSV';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export const TableCkeckBox = ({item,CheckValue,SetArrayValue})=>{
     return <div style={{display:'flex',borderBottom:'1px solid gray',justifyContent:'space-between',margin:'20px',padding:'10px 20px'}}>
         <div style={{color:'white'}}>{item.Customer_Name} ( {item.Mobile} )</div>
@@ -66,6 +68,7 @@ export default function ReadyToSendSMS({SendingData}) {
   }
   const list = (anchor) => (
     <Box className={Style.DrawerCenter} style={{backgroundColor:"#13192f"}} sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : '100vw' }} role="presentation">
+        <ToastContainer className={Style.toastDiv}/>
         <div style={{width:'100vw',height:'100svh',display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
             <div style={{maxWidth:'700px',width:'100%',backgroundColor:'#1e2742',height:'100svh',display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
             <div className={Style.DrawermapdataCenter}>
@@ -84,7 +87,14 @@ export default function ReadyToSendSMS({SendingData}) {
                 </div>
                 <div style={{display:'flex',flexDirection:'column'}}>
                     <button onClick={()=>{HandelSelectAll()}} style={{border:'none',borderRadius:'5px',fontSize:'13px',width:'150px',padding:'10px 15px', margin:'15px',cursor:'pointer',backgroundColor:'#A240E5',color:'#fff'}}>{ArrayOfNumbers.length != 0?'Unselect':'Select All'}</button>
-                    <button onClick={()=>{sendgreatingmessages(SendingData,ArrayOfNumbers);alert('Message Sent ...')}} style={{border:'none',borderRadius:'5px',fontSize:'13px',width:'150px',padding:'10px 15px', margin:'15px',cursor:'pointer',backgroundColor:'#A240E5',color:'#fff'}}>Send</button>
+                    <button onClick={ async ()=>{
+                      const res =  await sendgreatingmessages(SendingData,ArrayOfNumbers);
+                      if (res) {
+                        toast.success("Message Send Successfully")
+                        console.log(res);
+                      }
+                      alert('Message Sent ...')
+                    }} style={{border:'none',borderRadius:'5px',fontSize:'13px',width:'150px',padding:'10px 15px', margin:'15px',cursor:'pointer',backgroundColor:'#A240E5',color:'#fff'}}>Send</button>
                     <button onClick={()=>{setState('top',false)}} style={{border:'1px solid #813abc',borderRadius:'5px',fontSize:'13px',width:'150px',padding:'10px 15px', margin:'15px',cursor:'pointer',backgroundColor:'transparent',color:'#813abc'}}>Cancel</button>
                 </div>
             </div>

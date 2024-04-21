@@ -74,17 +74,19 @@ async function hitAPI(numbersList,event) {
                         ContentType: 'application/json',
                         ACL: 'public-read'
                     };
+                    if (hits % 5 === 0) {
+                        console.log("Reached 5 hits. Waiting for 5 Seconds...");
+                        await new Promise(resolve => setTimeout(resolve, 5000));
+                    }
                     const respons = await s3Client.send(new PutObjectCommand(uploadJaonPara));
                 } else {
                     console.log(`API hit failed for number: ${number}`);
+                    return `API hit failed for number: ${number}`
                 }
             }else{
                 console.log("Already in the list");
+                return "Already in the list";
             }
-        if (hits % 5 === 0) {
-            console.log("Reached 5 hits. Waiting for 12 Seconds...");
-            await new Promise(resolve => setTimeout(resolve, 12000));
-        }
     }
     return true;
 }

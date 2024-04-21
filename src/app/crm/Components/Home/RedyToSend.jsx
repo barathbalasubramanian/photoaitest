@@ -89,6 +89,7 @@ export default function ReadyToSendSMS({SendingData}) {
                     <button onClick={()=>{HandelSelectAll()}} style={{border:'none',borderRadius:'5px',fontSize:'13px',width:'150px',padding:'10px 15px', margin:'15px',cursor:'pointer',backgroundColor:'#A240E5',color:'#fff'}}>{ArrayOfNumbers.length != 0?'Unselect':'Select All'}</button>
                     <button onClick={ async ()=>{
                       const res =  await sendgreatingmessages(SendingData,ArrayOfNumbers);
+                      console.log(res,"Response")
                       if (res) {
                         toast.success("Message Send Successfully")
                         console.log(res);

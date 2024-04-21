@@ -92,6 +92,8 @@ export default function ReadyToSendSMS({SendingData}) {
                       if (res) {
                         toast.success("Message Send Successfully")
                         console.log(res);
+                      } else {
+                        toast.warning("Something Went wrong!",res)
                       }
                       alert('Message Sent ...')
                     }} style={{border:'none',borderRadius:'5px',fontSize:'13px',width:'150px',padding:'10px 15px', margin:'15px',cursor:'pointer',backgroundColor:'#A240E5',color:'#fff'}}>Send</button>

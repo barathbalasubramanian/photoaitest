@@ -82,8 +82,8 @@ async function hitAPI(numbersList,event) {
                 console.log("Already in the list");
             }
         if (hits % 5 === 0) {
-            console.log("Reached 5 hits. Waiting for 5 Seconds...");
-            await new Promise(resolve => setTimeout(resolve, 5000));
+            console.log("Reached 5 hits. Waiting for 12 Seconds...");
+            await new Promise(resolve => setTimeout(resolve, 12000));
         }
     }
     return true;

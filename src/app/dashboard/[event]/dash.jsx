@@ -100,7 +100,7 @@ export default function Dashboard({ event}){
       };
       try {
         const FetchedImages = await s3Client.send(new ListObjectsV2Command(listParams));
-        const fetchedImages = FetchedImages.Contents.map(obj => obj.Key).filter((key)=>{if(key != `${event}/photographers_images/`){return key}});
+        const fetchedImages = FetchedImages.Contents.map(obj => obj.Key).filter((key)=>{if(key != `${event}/photographers_images/`){ return key}});
         DobeMappedData([...new Set([...DobeMaped,...fetchedImages])]);
         tokenvalue(FetchedImages.NextContinuationToken);
         PushToStacks(fetchedImages);
@@ -233,11 +233,11 @@ export default function Dashboard({ event}){
       SliderValue(true);
       scrollvalue(DobeMaped.indexOf(path))
     };
-    window.onscroll = function(ev) {
-      if ((window.innerHeight + window.scrollY + 200) >= document.body.offsetHeight && pagetext !== 'Favorites' && !isituser) {
-        FetchDashboard(nexttoken);
-      }
-    };
+    // window.onscroll = function(ev) {
+    //   if ((window.innerHeight + window.scrollY + 200) >= document.body.offsetHeight && pagetext !== 'Favorites' && !isituser) {
+    //     FetchDashboard(nexttoken);
+    //   }
+    // };
     const DeleteFunction = async(item)=>{
       loadderevalue(true)
       var attt = [];
@@ -277,7 +277,7 @@ export default function Dashboard({ event}){
           const uniqueFileName = new Date().toISOString().replace(/[-:.]/g, "").replace("T", "_");
           const uploadCommand = new PutObjectCommand({
           Bucket: process.env.NEXT_PUBLIC_AWS_BUCKET_NAME,
-          Key: `${event}/COMPRESS_IMAGES/Manual_Upload/${event+uniqueFileName}.jpg`,
+          Key: `${event}/COMPRESS_IMAGES/Others/${event+uniqueFileName}.jpg`,
           Body: Compresedimage,
           ACL: 'public-read'
           });
@@ -285,12 +285,12 @@ export default function Dashboard({ event}){
           if(respo.$metadata.httpStatusCode == 200){
           const uploadd = new PutObjectCommand({
               Bucket: process.env.NEXT_PUBLIC_AWS_BUCKET_NAME,
-              Key: `${event}/photographers_images/Manual_Upload/${event+uniqueFileName}.jpg`,
+              Key: `${event}/photographers_images/Others/${event+uniqueFileName}.jpg`,
               Body: upload[0],
               ACL: 'public-read'
           });
           const response = await s3Client.send(uploadd);
-          var attt = [`Manual_Upload/${event+uniqueFileName}.jpg`];
+          var attt = [`Others/${event+uniqueFileName}.jpg`];
           const fetchedImages = DobeMaped.map(key => {
                 const parts = key.split('/');
                 attt.push(parts[2]+"/"+parts[3]);

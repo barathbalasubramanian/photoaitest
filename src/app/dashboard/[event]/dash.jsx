@@ -45,6 +45,7 @@ export default function Dashboard({ event}){
     const [AllFolders,SetAllFolders] = useState([]);
     const [userInfo,SetuserInfo] = useState({});
     const [KeyState,KeyStateValue] = useState(-1);
+    const [folderSelect,setfolderSelect] = useState("");
     const Toast = Swal.mixin({ toast: true, position: "top-end", showConfirmButton: false, timer: 2000, timerProgressBar: true, didOpen: (toast) => { toast.onmouseenter = Swal.stopTimer; toast.onmouseleave = Swal.resumeTimer;}});
     const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_KEY);
     const s3Client = new S3Client({
@@ -108,6 +109,37 @@ export default function Dashboard({ event}){
         console.error('Error fetching images:', error);
       }
     }
+
+    const FetchImagesByFolderName = async(continuationtoken,key,firsttime)=>{
+      console.log(continuationtoken,key,firsttime,key)
+      const listParams = {
+        Bucket: process.env.NEXT_PUBLIC_AWS_BUCKET_NAME,
+        MaxKeys: 10,
+        ContinuationToken: continuationtoken,
+        Prefix: `${event}/photographers_images/${key}`
+      };
+      try {
+        const FetchedImages = await s3Client.send(new ListObjectsV2Command(listParams));
+        const fetchedImages = FetchedImages.Contents.map(obj => obj.Key);
+        tokenvalue(FetchedImages.NextContinuationToken);
+        if (firsttime){ 
+          stackonevalue([]);
+          stacktwovalue([]);
+          stackthreevalue([]);
+          stackfourvalue([]);
+          DobeMappedData([]);
+          DobeMappedData(fetchedImages);
+        }
+        else {
+          DobeMappedData([...new Set([...DobeMaped,...fetchedImages])]);
+        }
+        PushToStacks(fetchedImages);
+        setfolderSelect(key)
+      } catch (error) {
+        console.error('Error fetching images:', error);
+      }
+    }
+
     const GetAllFavourite = async()=>{
       const result = await supabase.from('UserEvents').select('Favourite_Images').eq("EventName",`${event}`);
       AllSupaFavouritevalue(result.data[0].Favourite_Images);
@@ -233,11 +265,17 @@ export default function Dashboard({ event}){
       SliderValue(true);
       scrollvalue(DobeMaped.indexOf(path))
     };
-    // window.onscroll = function(ev) {
-    //   if ((window.innerHeight + window.scrollY + 200) >= document.body.offsetHeight && pagetext !== 'Favorites' && !isituser) {
-    //     FetchDashboard(nexttoken);
-    //   }
-    // };
+    window.onscroll = function(ev) {
+      if ((window.innerHeight + window.scrollY + 200) >= document.body.offsetHeight && pagetext !== 'Favorites' && !isituser) {
+        if (folderSelect == "") {
+          console.log("Querying ...",folderSelect)
+          FetchDashboard(nexttoken);
+        }
+        else {
+          FetchImagesByFolderName(nexttoken,folderSelect,false);
+        }
+      }
+    };
     const DeleteFunction = async(item)=>{
       loadderevalue(true)
       var attt = [];
@@ -314,25 +352,27 @@ export default function Dashboard({ event}){
         }
           loadderevalue(false)
   };
-  const FetchImagesByFolderName = async(key)=>{
-    const listParams = {
-      Bucket: process.env.NEXT_PUBLIC_AWS_BUCKET_NAME,
-      Prefix: `${key}`
-    };
-    try {
-      const FetchedImages = await s3Client.send(new ListObjectsV2Command(listParams));
-      const fetchedImages = FetchedImages.Contents.map(obj => obj.Key);
-      stackonevalue([]);
-      stacktwovalue([]);
-      stackthreevalue([]);
-      stackfourvalue([]);
-      DobeMappedData([]);
-      DobeMappedData(fetchedImages);
-      PushToStacks(fetchedImages);
-    } catch (error) {
-      console.error('Error fetching images:', error);
-    }
-  }
+  // const FetchImagesByFolderName = async(key)=>{
+  //   const listParams = {
+  //     Bucket: process.env.NEXT_PUBLIC_AWS_BUCKET_NAME,
+  //     Prefix: `${event}/photographers_images/${key.split('/')[2]}`
+  //   };
+  //   try {
+  //     const FetchedImages = await s3Client.send(new ListObjectsV2Command(listParams));
+  //     const fetchedImages = FetchedImages.Contents.map(obj => obj.Key);
+  //     stackonevalue([]);
+  //     stacktwovalue([]);
+  //     stackthreevalue([]);
+  //     stackfourvalue([]);
+  //     DobeMappedData([]);
+  //     DobeMappedData(fetchedImages);
+  //     PushToStacks(fetchedImages);
+  //     setfolderSelect(key.split('/')[2])
+  //   } catch (error) {
+  //     console.error('Error fetching images:', error);
+  //   }
+  // }
+
     return(
         <>
         {loadeer?<Loader/>:""}
@@ -362,7 +402,7 @@ export default function Dashboard({ event}){
                     <div className={Styles.FoldersCss}>
                       {pagetext === 'All Photos'?<>
                       {AllFolders.map((item,index)=>{
-                            return <div onClick={()=>{FetchImagesByFolderName(item);KeyStateValue(index)}} style={KeyState == index?{borderBottom:'2px solid #725aff'}:{}}>{item.split('/')[2]}</div>
+                            return <div onClick={()=>{FetchImagesByFolderName(null,item.split('/')[2],true);KeyStateValue(index)}} style={KeyState == index?{borderBottom:'2px solid #725aff'}:{}}>{item.split('/')[2]}</div>
                           })}
                       </>:<></>}
                     </div>

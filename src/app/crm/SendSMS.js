@@ -53,9 +53,10 @@ export async function sendsmscrmofcustomer(name,bal,Mobile) {
         const WhatUrl = Whatsapp_.data[0].WhatsApp_API;
         if(Whatsapp_.data[0].Is_Whatsapp_Verified){
             const text = `${WhatUrl}&phone=${Mobile}&text=account_message_ut&priority=wa&stype=normal&Params=${name},₹${bal},${User_Name}`
-            await hitAPI(text);;
+            await hitAPI(text);
         }else{
             const Text = `${WhatUrl}&number=91${Mobile}&type=text&message=%0AHello ${name},%0A%0AWe hope this message finds you well. We like to provide you with an update regarding your account with us.%0A%0AThe current outstanding balance to be settled is ₹${bal}.%0A%0AShould you have any queries or require further clarification, please feel free to get in touch with us.%0A%0ABest Regards,%0A${User_Name}`;
+            await hitAPI(Text);
         }
         return true;
     } catch (error) {
@@ -99,6 +100,7 @@ export async function sendgreatingmessages(SendingData,ArrayOfNumbers) {
             if(Whatsapp_.data[0].Is_Whatsapp_Verified){
                 // const text = `${WhatUrl}phone=${ArrayOfNumbers[a][0]}&text=${SendingData.Greeting_Name},%0A%0A${SendingData.Desc}&media_url=${SendingData.Photo}&priority=wa&stype=normal&Params=${ArrayOfNumbers[a][1]}`
                 const text = `${WhatUrl}phone=${ArrayOfNumbers[a][0]},%0A%0A${SendingData.Desc}&media_url=${SendingData.Photo}&priority=wa&stype=normal&Params=${ArrayOfNumbers[a][1]}`
+                await hitAPI(text);
                 hits++
             }else{
                 const Text = `${WhatUrl}&number=91${ArrayOfNumbers[a][0]}&image&message=Hi ${ArrayOfNumbers[a][1]},%0A%0A${SendingData.Desc}&media_url=${SendingData.Photo}`;

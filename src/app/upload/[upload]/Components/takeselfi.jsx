@@ -1,46 +1,81 @@
 'use client'
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Webcam from "react-webcam";
 import Styles from "./page.module.css"
-const videoConstraints = {
-    width: 4000,
-    height: 4000,
-    facingMode: "user"
-};
+    const videoConstraints = {
+        width: 4000,
+        height: 4000,
+        facingMode: "user"
+    };
     const TakeSelfi = ({setSelfie,captureselfivalue}) => {
-    const webcamRef = React.useRef(null);
-    const [Retake,retakevalue] = useState(false);
-    const [image,imagevalue] = useState('');
+
+        const videoRef = useRef(null);
+        const canvasRef = useRef(null);
+        const [stream, setStream] = useState(null);
+        const webcamRef = useRef(null);
+        const [Retake,retakevalue] = useState(false);
+        const [image,imagevalue] = useState('');
+
+        useEffect(() => {
+            const constraints = {
+              audio: false,
+              video: { 
+                facingMode: "user",
+                width: { ideal: 4096 },
+                height: { ideal: 2160 }
+              },
+            };
+        
+            navigator.mediaDevices
+              .getUserMedia(constraints)
+              .then((stream) => {
+                setStream(stream);
+                videoRef.current.srcObject = stream;
+              })
+              .catch((err) => {
+                console.error(err);
+              });
+          }, [Retake]);
+
+        const stopCamera=()=>{
+           var stream = videoRef.current.srcObject;
+           var tracks = stream.getTracks();
+           for (var i = 0; i < tracks.length; i++) {
+             tracks[i].stop();
+           }
+           setStream(null);
+        }
+
+    
     const downloadImage = (imageSrc, imageName) => {
         const a = document.createElement('a');
         a.href = imageSrc;
         a.download = imageName;
-        // document.body.appendChild(a);
         a.click();
-        // document.body.removeChild(a);
     };
     
     const capture = (async() => {
-        const imageSrc = await webcamRef.current.getScreenshot();
-        console.log(imageSrc);
-        const encodedData = imageSrc.split(',')[1];
+
+        const width = videoRef.current.videoWidth;
+        const height = videoRef.current.videoHeight;
+        canvasRef.current.width = width;
+        canvasRef.current.height = height;
+        canvasRef.current
+          .getContext("2d")
+          .drawImage(videoRef.current, 0, 0, width, height);
+        const dataURL = canvasRef.current.toDataURL("image/png");
+
+        const encodedData = dataURL.split(',')[1];
         const binaryData = atob(encodedData);
         const blob = new Blob([new Uint8Array(Array.from(binaryData).map(char => char.charCodeAt(0)))], { type: 'image/jpeg' });
-        imagevalue(imageSrc);
+        imagevalue(dataURL);
         setSelfie(blob);
-        // // Download
-        downloadImage(imageSrc, 'selfie.jpg');
+        console.log("Blob :",blob)
 
-        // const imageSrc = await webcamRef.current.getScreenshot();
-        // // Set the captured image source to state
-        // imagevalue(imageSrc);
-        
-        // // Download the image
-        // downloadImage(imageSrc, 'selfie.jpg');
-
-        // // Note: You're already setting the captured image as blob in 'setSelfie' state. 
-        // // If you want to use the blob for other purposes, you can keep the following line.
-        // setSelfie(imageSrc);
+        imagevalue(dataURL)
+        // setSelfie(dataURL)
+        downloadImage(dataURL, 'selfie.jpg');
+        stopCamera();
       }
 
     );
@@ -57,13 +92,17 @@ const videoConstraints = {
                     <div className={Styles.mwfhbwjhChED}>
                         <div className={Styles.mChED}>
                             <div>
-                                <Webcam audio={false} ref={webcamRef} screenshotFormat="image/jpeg" screenshotQuality={1} videoConstraints={videoConstraints}/>
+                                {/* <Webcam audio={false} ref={webcamRef} screenshotFormat="image/jpeg" screenshotQuality={1} videoConstraints={videoConstraints}/> */}
+                                <video ref={videoRef} autoPlay style={{
+                                    height:"300px",width:"300px",objectFit:"cover",borderRadius:"30%",transform: "scaleX(-1)"
+                                }}/>
+                                <canvas ref={canvasRef} style={{ display: "none" }}/>
                             </div>
                         </div>
                     </div></>:<><img src={image} alt="" style={{height:"300px",width:"300px",objectFit:"cover",borderRadius:"30%",transform: "scaleX(-1)"}}/></>}
                 </div>
                 <div className={Styles.capturebtn}>
-                    {Retake?<div onClick={()=>{retakevalue(false)}}>Re-Take</div>:<></>}
+                    {Retake?<div onClick={()=>{retakevalue(false);imagevalue(null);}}>Re-Take</div>:<></>}
                     <div onClick={()=>{if(Retake){captureselfivalue(false)}else{capture();retakevalue(true)}}}>{Retake?"Submit":"Capture"}</div>
                 </div>
             </div>

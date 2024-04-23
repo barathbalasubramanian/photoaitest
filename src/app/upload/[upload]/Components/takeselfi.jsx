@@ -15,33 +15,32 @@ const videoConstraints = {
         const a = document.createElement('a');
         a.href = imageSrc;
         a.download = imageName;
-        document.body.appendChild(a);
+        // document.body.appendChild(a);
         a.click();
-        document.body.removeChild(a);
+        // document.body.removeChild(a);
     };
     
     const capture = (async() => {
-        // const imageSrc = await webcamRef.current.getScreenshot();
-        // console.log(imageSrc);
-        // const encodedData = imageSrc.split(',')[1];
-        // const binaryData = atob(encodedData);
-        // const blob = new Blob([new Uint8Array(Array.from(binaryData).map(char => char.charCodeAt(0)))], { type: 'image/jpeg' });
-        // imagevalue(imageSrc);
-        // setSelfie(blob);
-
+        const imageSrc = await webcamRef.current.getScreenshot();
+        console.log(imageSrc);
+        const encodedData = imageSrc.split(',')[1];
+        const binaryData = atob(encodedData);
+        const blob = new Blob([new Uint8Array(Array.from(binaryData).map(char => char.charCodeAt(0)))], { type: 'image/jpeg' });
+        imagevalue(imageSrc);
+        setSelfie(blob);
         // // Download
         // downloadImage(imageSrc, 'selfie.jpg');
 
-        const imageSrc = await webcamRef.current.getScreenshot();
-        // Set the captured image source to state
-        imagevalue(imageSrc);
+        // const imageSrc = await webcamRef.current.getScreenshot();
+        // // Set the captured image source to state
+        // imagevalue(imageSrc);
         
-        // Download the image
-        downloadImage(imageSrc, 'selfie.jpg');
+        // // Download the image
+        // downloadImage(imageSrc, 'selfie.jpg');
 
-        // Note: You're already setting the captured image as blob in 'setSelfie' state. 
-        // If you want to use the blob for other purposes, you can keep the following line.
-        setSelfie(blob);
+        // // Note: You're already setting the captured image as blob in 'setSelfie' state. 
+        // // If you want to use the blob for other purposes, you can keep the following line.
+        // setSelfie(imageSrc);
       }
 
     );

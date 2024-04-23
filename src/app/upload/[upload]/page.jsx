@@ -16,6 +16,7 @@ export default function YourComponent({ params }) {
     const Toast = Swal.mixin({ toast: true, position: "top-end", showConfirmButton: false, timer: 5000, timerProgressBar: true, didOpen: (toast) => { toast.onmouseenter = Swal.stopTimer; toast.onmouseleave = Swal.resumeTimer;}});
     if(name !== '' && email !== '' && phno.length == 10 && selfie){
       const Array = {"email": email, "phno": phno, "name": name};
+      console.log(Array,"Array");
       const message = await HandelUploadSubmit(Array,selfie,params.upload,name);
       if(message){Toast.fire({icon: 'success',title: 'Selfie Successfuly Uploaded ...'});
       setSelfie(null);
@@ -55,8 +56,8 @@ export default function YourComponent({ params }) {
         </form>
       </div>
     </div>
-    { captureselfi ? <CameraComponent /> : "" }
-    {/* {captureselfi?<TakeSelfi setSelfie={setSelfie} captureselfivalue={captureselfivalue}/>:''} */}
+    {/* { captureselfi ? <CameraComponent /> : "" } */}
+    {captureselfi?<TakeSelfi setSelfie={setSelfie} captureselfivalue={captureselfivalue}/>:''}
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     </>
   );

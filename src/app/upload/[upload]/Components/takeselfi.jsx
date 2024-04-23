@@ -29,7 +29,7 @@ const videoConstraints = {
         imagevalue(imageSrc);
         setSelfie(blob);
         // // Download
-        // downloadImage(imageSrc, 'selfie.jpg');
+        downloadImage(imageSrc, 'selfie.jpg');
 
         // const imageSrc = await webcamRef.current.getScreenshot();
         // // Set the captured image source to state

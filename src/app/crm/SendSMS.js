@@ -105,7 +105,6 @@ export async function sendgreatingmessages(SendingData,ArrayOfNumbers) {
             }else{
                 const Text = `${WhatUrl}&number=91${ArrayOfNumbers[a][0]}&image&message=Hi ${ArrayOfNumbers[a][1]},%0A%0A${SendingData.Desc}&media_url=${SendingData.Photo}`;
                 const res = await hitAPI(Text);
-                await new Promise(resolve => setTimeout(resolve, 1000));
                 if (res) {
                     hits++
                 }

@@ -44,7 +44,7 @@ export default function GreatingsLeftDrawer() {
                   </div>
                   <div><UploadImageOrVideo GetAllGreetins={GetAllGreetins}/></div>
               </div>
-              <div className={Style.TableTag}>
+              <div className={Style.TableTag} style={{maxHeight:"70vh",overflow:"scroll"}}>
                   <table>
                     <thead>
                       <tr>

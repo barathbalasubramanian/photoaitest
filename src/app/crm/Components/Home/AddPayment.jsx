@@ -8,6 +8,7 @@ import AddPaymentModes from './AddPaymentModes';
 import { GetEventsAmountByUUID,GetEventsTotalAmountByUUID,UpdateEventsAmountByUUID } from './AllFunctions';
 import downloadCSV from './DownloadCSV';
 import { sendsmscrmofcustomersetelement } from '../../SendSMS';
+import PaymentUpdateSendBtn from './PaymentUpdateSendBtn';
 export default function AddPayment({uuid,name,cusname,Mobile}) {
   const [Data,DataValue] = React.useState([]);
   const [total,Settotal] = React.useState(0);
@@ -99,7 +100,16 @@ export default function AddPayment({uuid,name,cusname,Mobile}) {
             <div style={{width:'40vw',display:'flex',margin:'0 30vw',justifyContent:'flex-end'}}><div style={{color:'white',margin:'20px'}}>Total {total.toLocaleString('en-IN', {style: 'currency',currency: 'INR'})}</div></div>
             <div style={{width:'100%',display:'flex',alignItems:'center',justifyContent:'center',marginTop:'50px'}}>
                 <div style={{maxWidth:'600px',width:'100%',display:'flex',justifyContent:'space-between'}}>
-                    <button onClick={()=>{HandelSendSMSBTN()}} style={{border:'none',borderRadius:'5px',fontSize:'13px',width:'150px',padding:'15px 20px', marginTop:'15px',cursor:'pointer',backgroundColor:'#A240E5',color:'#fff'}}>Send Update</button>
+                    {/* <button onClick={()=>{HandelSendSMSBTN()}} style={{border:'none',borderRadius:'5px',fontSize:'13px',width:'150px',padding:'15px 20px', marginTop:'15px',cursor:'pointer',backgroundColor:'#A240E5',color:'#fff'}}>Send Update</button> */}
+                    
+                    {/* Updated Code */}
+                    <PaymentUpdateSendBtn 
+                      name={name}
+                      total={total}
+                      totalAmount={totalAmount}
+                      cusname={cusname}
+                      Mobile={Mobile}
+                    />
                     <button onClick={()=>{downloadCSV(Data)}} style={{border:'none',borderRadius:'5px',fontSize:'13px',width:'150px',padding:'15px 20px', marginTop:'15px',cursor:'pointer',backgroundColor:'#A240E5',color:'#fff'}}>Download as CSV</button>
                 </div>
             </div>

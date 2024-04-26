@@ -23,4 +23,3 @@ export function searchFun(query, SetData) {
     });
     return results;
   }
-  

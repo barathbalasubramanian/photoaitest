@@ -64,7 +64,7 @@ export default function EditLeftDrawer() {
             <div className={Style.AddModelButton}>
               <EditCreate FetchCustomerData={FetchCustomerData}/>
             </div>
-            <div className={Style.TableTag}>
+            <div className={Style.TableTag} style={{maxHeight:"60vh",overflow:"scroll"}}>
                 <table>
                   <thead>
                     <tr>
@@ -75,17 +75,17 @@ export default function EditLeftDrawer() {
                       <th>Balance</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    {Data.map((item,index)=>{
-                      return <tr key={index}>
-                      <td style={{cursor:'pointer'}}><EventDetailsToDownload id={item.Customer_ID} name={item.Customer_Name} Mobile={item.Mobile}/></td>
-                      <td>{item.Mobile}</td>
-                      <td>{item.Email_ID}</td>
-                      <td>{item.Location}</td>
-                      <td>{item.Balance.toLocaleString('en-IN', {style: 'currency',currency: 'INR'})}</td>
-                      <td style={{border:'none',backgroundColor:'#13192f'}}><img style={{width:'20px',cursor:'pointer'}} onClick={()=>{if(ConstCheckedData){SetConstCheckedData(null)}else{SetConstCheckedData(item)}}} src={ConstCheckedData?.Customer_ID != item.Customer_ID?'/svg/CheckedFalse.svg':'/svg/CheckedTrue.svg'} alt="" /></td>
-                    </tr>
-                    })}
+                  <tbody >
+                      {Data.map((item,index)=>{
+                        return  <tr key={index}>
+                        <td style={{cursor:'pointer'}}><EventDetailsToDownload id={item.Customer_ID} name={item.Customer_Name} Mobile={item.Mobile}/></td>
+                        <td>{item.Mobile}</td>
+                        <td>{item.Email_ID}</td>
+                        <td>{item.Location}</td>
+                        <td>{item.Balance.toLocaleString('en-IN', {style: 'currency',currency: 'INR'})}</td>
+                        <td style={{border:'none',backgroundColor:'#13192f'}}><img style={{width:'20px',cursor:'pointer'}} onClick={()=>{if(ConstCheckedData){SetConstCheckedData(null)}else{SetConstCheckedData(item)}}} src={ConstCheckedData?.Customer_ID != item.Customer_ID?'/svg/CheckedFalse.svg':'/svg/CheckedTrue.svg'} alt="" /></td>
+                      </tr>
+                      })}
                     <tr>
                       <td style={{border:'none',backgroundColor:'#13192f'}}></td>
                       <td style={{border:'none',backgroundColor:'#13192f'}}></td>

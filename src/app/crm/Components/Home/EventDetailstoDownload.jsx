@@ -12,6 +12,7 @@ import { GetEventNameByDate, GetEventsByUUID, UpdateStatusByUUID,DeleteCustomerE
 import { ColorAndBGcolor } from './page';
 import UpdateEventDetails from './UpdateCustomerDetail';
 import sendsmscrm from '../../SendSMS';
+import EventDetailsSendBtn from './EventDetailsSendBtn';
 export const TableCkeckBox = ({item,ConstCheckedData,cusname,SetConstCheckedData,OnStatusChange,Mobile})=>{
   const [StatusValue,SetStatusValue] = React.useState(item.Status);
   let AdvanceAmount = 0;
@@ -190,7 +191,10 @@ export default function EventDetailsToDownload({id,name,Mobile}) {
             </div>
             <div style={{width:'100%',display:'flex',alignItems:'center',justifyContent:'center',marginTop:'50px'}}>
                 <div style={{maxWidth:'500px',width:'100%',display:'flex',justifyContent:'space-between'}}>
-                    <button onClick={()=>{HandelSendSMS()}} style={{border:'none',borderRadius:'5px',fontSize:'13px',width:'150px', marginTop:'15px',cursor:'pointer',backgroundColor:'#A240E5',color:'#fff'}}>Send Update</button>
+                    {/* <button onClick={()=>{HandelSendSMS()}} style={{border:'none',borderRadius:'5px',fontSize:'13px',width:'150px', marginTop:'15px',cursor:'pointer',backgroundColor:'#A240E5',color:'#fff'}}>Send Update</button> */}
+                    
+                    {/* Updated Code */}
+                    <EventDetailsSendBtn name={name} ConstCheckedData={ConstCheckedData} Mobile={Mobile} />
                     <button onClick={()=>{downloadCSVFunction()}} style={{border:'none',borderRadius:'5px',fontSize:'13px',width:'150px',padding:'15px 20px', marginTop:'15px',cursor:'pointer',backgroundColor:'#A240E5',color:'#fff'}}>Download as CSV</button>
                 </div>
                 {ConstCheckedData?<>

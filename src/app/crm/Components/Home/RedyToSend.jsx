@@ -9,6 +9,7 @@ import { sendgreatingmessages } from '../../SendSMS';
 import { searchFun } from './DownloadCSV';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import GreetingSendBtn from './GreetingSendBtn';
 export const TableCkeckBox = ({item,CheckValue,SetArrayValue})=>{
     return <div style={{display:'flex',borderBottom:'1px solid gray',justifyContent:'space-between',margin:'20px',padding:'10px 20px'}}>
         <div style={{color:'white'}}>{item.Customer_Name} ( {item.Mobile} )</div>
@@ -87,7 +88,7 @@ export default function ReadyToSendSMS({SendingData}) {
                 </div>
                 <div style={{display:'flex',flexDirection:'column'}}>
                     <button onClick={()=>{HandelSelectAll()}} style={{border:'none',borderRadius:'5px',fontSize:'13px',width:'150px',padding:'10px 15px', margin:'15px',cursor:'pointer',backgroundColor:'#A240E5',color:'#fff'}}>{ArrayOfNumbers.length != 0?'Unselect':'Select All'}</button>
-                    <button onClick={ async ()=>{
+                    {/* <button onClick={ async ()=>{
                       const res =  await sendgreatingmessages(SendingData,ArrayOfNumbers);
                       console.log(res,"Response")
                       if (res) {
@@ -98,7 +99,11 @@ export default function ReadyToSendSMS({SendingData}) {
                         toast.warning("Something Went wrong!")
                       }
                       alert('Message Sent ...')
-                    }} style={{border:'none',borderRadius:'5px',fontSize:'13px',width:'150px',padding:'10px 15px', margin:'15px',cursor:'pointer',backgroundColor:'#A240E5',color:'#fff'}}>Send</button>
+                    }} style={{border:'none',borderRadius:'5px',fontSize:'13px',width:'150px',padding:'10px 15px', margin:'15px',cursor:'pointer',backgroundColor:'#A240E5',color:'#fff'}}>Send</button> */}
+                    
+                    {/* Updated Code */}
+                    <GreetingSendBtn SendingData={SendingData} ArrayOfNumbers={ArrayOfNumbers} 
+                    />
                     <button onClick={()=>{setState('top',false)}} style={{border:'1px solid #813abc',borderRadius:'5px',fontSize:'13px',width:'150px',padding:'10px 15px', margin:'15px',cursor:'pointer',backgroundColor:'transparent',color:'#813abc'}}>Cancel</button>
                 </div>
             </div>
